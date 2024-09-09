@@ -40,9 +40,9 @@ network_print() {
                     icon="%{F#474747}TUN%{F-}"
                 fi
             elif [ "$state" = "activating" ]; then
-                icon="#4"
+                icon="ACT"
             elif [ "$state" = "deactivating" ]; then
-                icon="#5"
+                icon="DAC"
             fi
 
             if [ $counter -gt 0 ]; then
@@ -56,7 +56,7 @@ network_print() {
 
         printf "\n"
     else
-        echo "#6"
+        echo "NON"
     fi
 }
 

@@ -19,13 +19,13 @@ MUTED=$(pamixer --get-mute)
 
 case $1 in
     "--up")
-        if [ $VOLUME -lt 90 ]; then 
-	    pamixer --increase 5 
+        if [ $VOLUME -lt 90 ]; then
+	    pamixer --increase 5
 	fi
         ;;
     "--down")
-        if [ $VOLUME -gt 0 ]; then 
-	    pamixer --decrease 5 
+        if [ $VOLUME -gt 0 ]; then
+	    pamixer --decrease 5
 	fi
         ;;
     "--mute")
