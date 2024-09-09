@@ -61,6 +61,33 @@ yay -Syu brightnessctl
 gnome-keyring libsecret keepass
 ```
 
+### Development
+```bash
+yay -Syu code code-features code-marketplace
+```
+
+## Login screen and lock screen
+```bash
+yay -Syu lightdm lightdm-slick-greeter
+
+sudo systemctl enable lightdm.service
+```
+
+Modify `/etc/lightdm/lightdm.conf`
+```conf
+[Seat:*]
+...
+greeter-session=lightdm-slick-greeter
+...
+```
+
+Configure xinit: ~/.xinitrc
+exec /usr/bin/i3
+
+yay -Syu noto-fonts-cjk ttf-firacode-nerd
+
+
+
 ## Install dotfiles
 
 
@@ -74,7 +101,13 @@ sudo cp ~/Nextcloud/2-my-repos/dotfiles-collection/tlp.conf /etc/tlp.conf
 ```
 
 ## Bluetooth
-Control media by bluetooth buttons
+```bash
+yay -Syu bluez bluez-utils bluez-obex
+sudo systemctl enable bluetooth.service
+sudo systemctl start bluetooth.service
+```
+
+> Control media by bluetooth buttons
 
 Create file `~/.config/systemd/user/mpris-proxy.service`:
 ```conf
@@ -126,9 +159,6 @@ CPU_ENERGY_PERF_POLICY_ON_AC=balance_power
 WIFI_PWR_ON_AC=on
 ```
 
-
-https://linrunner.de/tlp/support/optimizing.html: did Extend battery runtime and Reduce power consumption / fan noise on AC power.
-
 ### Install `powertop`
 
 ```bash
@@ -136,7 +166,7 @@ yay -Syu powertop
 ```
 
 Create file `/etc/systemd/system/powertop.service`:
-```
+```conf
 [Unit]
 Description=Powertop tunings
 
@@ -167,7 +197,3 @@ sudo systemctl enable cpupower --now
 Scripts used in polybar create a lot of heat. Don't use `tail=true` for non-loop-infinity scripts, set the larger interval of modules.
 
 The system reduces significantly from 48 degree Celcius to 38 degree Celcius after changing the interval.
-
-## TODO
-
-- Configure rofi menu of wifi.

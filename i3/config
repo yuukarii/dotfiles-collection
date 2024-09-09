@@ -76,6 +76,9 @@ exec_always --no-startup-id feh --bg-scale ~/Nextcloud/4-media/3.1-pictures/3.1.
 # Start ibus
 exec --no-startup-id ibus-daemon -rxRd
 
+# Start nextcloud
+exec --no-startup-id /usr/bin/nextcloud --background &
+
 # Use a custom script to check volume with pipewire
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/polybar/pipewire-simple.sh --up
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/polybar/pipewire-simple.sh --down
