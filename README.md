@@ -3,29 +3,29 @@
 ## Install Arch Linux
 
 - Prepare a bootable USB and boot to it.
-- Verify the boot mode: cat /sys/firmware/efi/fw_platform_size (It should return 64).
-- Connect to the internet via iwctl.
+- Verify the boot mode: `cat /sys/firmware/efi/fw_platform_size` (It should return 64).
+- Connect to the internet via `iwctl`.
 - Update the system clock.
 - Partition the disks.
-    - Example layout: /boot 1GB, swap = RAM = 16GB, / the rest of disk.
+    - Example layout: `/boot` 1GB, `swap` = RAM = 16GB, `/` the rest of disk.
 - Format the partitions.
 - Mount the file systems.
 - Select the mirrors.
 - Install essential packages.
 - Configure
-    - fstab file.
+    - `fstab` file.
     - Change root into the new system.
     - Install `vim`, `less`.
     - Set up timezone.
     - Localization.
-    - Network configuration. (Install dhcpcd and networkmanager).
+    - Network configuration. (Install `dhcpcd` and `networkmanager`).
     - Change root password.
     - Install GRUB bootloader. Remember to generate the config file.
     - Install `sudo`.
-    - Create my user, add it to sudoers file.
+    - Create my user, change password add it to sudoers file.
 
 ## Install i3wm and necessary packages
-### Install yay
+### Install `yay`
 ```bash
 sudo pacman -S --needed git base-devel
 git clone https://aur.archlinux.org/yay.git
@@ -37,7 +37,7 @@ makepkg -si
 ```bash
 yay -Syu i3-wm i3lock xorg-xinit xorg-server xorg-xrandr xdg-utils # choose noto-fonts
 yay -Syu alacritty
-yay -Syu rofi polybar feh picom
+yay -Syu rofi polybar feh picom dex
 yay -Syu libnotify
 ```
 
@@ -57,8 +57,8 @@ yay -Syu brightnessctl
 ```
 
 ### Credentials
-```
-gnome-keyring libsecret keepass
+```bash
+yay -Syu gnome-keyring libsecret keepass
 ```
 
 ### Development
@@ -81,10 +81,16 @@ greeter-session=lightdm-slick-greeter
 ...
 ```
 
-Configure xinit: ~/.xinitrc
+### Auto start i3 at login
+Add below line to `~/.xinitrc`:
+```bash
 exec /usr/bin/i3
+```
 
+### Install fonts
+```bash
 yay -Syu noto-fonts-cjk ttf-firacode-nerd
+```
 
 
 
@@ -127,7 +133,7 @@ systemctl --user start mpris-proxy.service
 systemctl --user status mpris-proxy.service
 ```
 
-Then do a daemon-reload before you start/enable the service with the --user flag.
+Then do a daemon-reload before you `start/enable` the service with the `--user` flag.
 
 ## Reduce heat of laptop
 
@@ -139,7 +145,7 @@ systemctl enable NetworkManager-dispatcher.service
 systemctl mask systemd-rfkill.service systemd-rfkill.socket
 ```
 
-Extend battry runtim:
+Extend battery runtim:
 ```bash
 CPU_ENERGY_PERF_POLICY_ON_BAT=power
 PLATFORM_PROFILE_ON_BAT=low-power # If available
