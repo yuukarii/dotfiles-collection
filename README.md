@@ -35,7 +35,7 @@ makepkg -si
 
 ### i3wm and xorg
 ```bash
-yay -Syu i3-wm i3lock xorg-xinit xorg-server xorg-xrandr xdg-utils # choose noto-fonts
+yay -Syu i3-wm i3lock xorg-xinit xorg-server xorg-xrandr xdg-utils autorandr # choose noto-fonts
 yay -Syu alacritty
 yay -Syu rofi polybar feh picom dex
 yay -Syu libnotify
@@ -203,3 +203,9 @@ sudo systemctl enable cpupower --now
 Scripts used in polybar create a lot of heat. Don't use `tail=true` for non-loop-infinity scripts, set the larger interval of modules.
 
 The system reduces significantly from 48 degree Celcius to 38 degree Celcius after changing the interval.
+
+## Handle multiple monitor
+```bash
+sudo cp hardware/95-monitor-hotplug.rules /etc/udev/rules.d/95-monitor-hotplug.rules
+sudo udevadm control --reload-rules
+```
