@@ -35,10 +35,16 @@ makepkg -si
 
 ### i3wm and xorg
 ```bash
-yay -Syu i3-wm i3lock xorg-xinit xorg-server xorg-xrandr xdg-utils autorandr # choose noto-fonts
+yay -Syu i3-wm i3lock xorg-xinit xorg-server xorg-xrandr xdg-utils # choose noto-fonts
 yay -Syu alacritty
 yay -Syu rofi polybar feh picom dex
 yay -Syu libnotify
+```
+
+sway
+```bash
+yay -Syu sway swaylock swayidle swaybg polkit 
+
 ```
 
 ### File explorer
@@ -63,8 +69,10 @@ yay -Syu gnome-keyring libsecret keepass
 
 ### Development
 ```bash
-yay -Syu code code-features code-marketplace
+yay -Syu neovim
 ```
+
+Install lazyvim.
 
 ## Login screen and lock screen
 ```bash
@@ -79,6 +87,11 @@ Modify `/etc/lightdm/lightdm.conf`
 ...
 greeter-session=lightdm-slick-greeter
 ...
+```
+
+For sway:
+```bash
+yay -Syu sddm
 ```
 
 ### Auto start i3 at login
@@ -204,8 +217,8 @@ Scripts used in polybar create a lot of heat. Don't use `tail=true` for non-loop
 
 The system reduces significantly from 48 degree Celcius to 38 degree Celcius after changing the interval.
 
-## Handle multiple monitor
-```bash
-sudo cp hardware/95-monitor-hotplug.rules /etc/udev/rules.d/95-monitor-hotplug.rules
-sudo udevadm control --reload-rules
-```
+## Issues
+
+### External mouse, keyboard delay a bit before responding
+
+This issue is due to USB suspend mode.
