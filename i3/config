@@ -65,6 +65,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # Start xrandr
 exec_always --no-startup-id $HOME/.config/i3/monitor-management.sh &
+bindsym $mod+Shift+m exec $HOME/.config/i3/monitor-management.sh &
 
 # Start picom
 exec --no-startup-id picom --config ~/.config/picom/picom.conf -b

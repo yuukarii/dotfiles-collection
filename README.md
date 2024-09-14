@@ -41,12 +41,6 @@ yay -Syu rofi polybar feh picom dex
 yay -Syu libnotify
 ```
 
-sway
-```bash
-yay -Syu sway swaylock swayidle swaybg polkit
-
-```
-
 ### File explorer
 ```bash
 yay -Syu thunar nextcloud-client gvfs thunar-archive-plugin xarchiver tumbler
@@ -89,11 +83,6 @@ greeter-session=lightdm-slick-greeter
 ...
 ```
 
-For sway:
-```bash
-yay -Syu sddm
-```
-
 ### Auto start i3 at login
 Add below line to `~/.xinitrc`:
 ```bash
@@ -105,18 +94,14 @@ exec /usr/bin/i3
 yay -Syu noto-fonts-cjk ttf-firacode-nerd
 ```
 
-
-
 ## Install dotfiles
 
-
 ```bash
-ln -s ~/Nextcloud/2-my-repos/dotfiles-collection/i3 ~/.config/i3
-ln -s ~/Nextcloud/2-my-repos/dotfiles-collection/polybar ~/.config/polybar
-ln -s ~/Nextcloud/2-my-repos/dotfiles-collection/rofi ~/.config/rofi
-ln -s ~/Nextcloud/2-my-repos/dotfiles-collection/alacritty ~/.config/alacritty
-ln -s ~/Nextcloud/2-my-repos/dotfiles-collection/picom ~/.config/picom
-sudo cp ~/Nextcloud/2-my-repos/dotfiles-collection/tlp.conf /etc/tlp.conf
+ln -s ~/dotfiles-collection/i3 ~/.config/i3
+ln -s ~/dotfiles-collection/polybar ~/.config/polybar
+ln -s ~/dotfiles-collection/rofi ~/.config/rofi
+ln -s ~/dotfiles-collection/alacritty ~/.config/alacritty
+ln -s ~/dotfiles-collection/picom ~/.config/picom
 ```
 
 ## Bluetooth
@@ -150,33 +135,7 @@ Then do a daemon-reload before you `start/enable` the service with the `--user` 
 
 ## Reduce heat of laptop
 
-### Installed TLP
-```bash
-pacman -S tlp tlp-rdw
-systemctl enable tlp.service
-systemctl enable NetworkManager-dispatcher.service
-systemctl mask systemd-rfkill.service systemd-rfkill.socket
-```
-
-Extend battery runtim:
-```bash
-CPU_ENERGY_PERF_POLICY_ON_BAT=power
-PLATFORM_PROFILE_ON_BAT=low-power # If available
-CPU_BOOST_ON_BAT=0
-CPU_HWP_DYN_BOOST_ON_BAT=0
-```
-Improve performance on AC Power
-```bash
-CPU_ENERGY_PERF_POLICY_ON_AC=performance
-PLATFORM_PROFILE_ON_AC=performance # If available
-```
-
-Reduce power consumption:
-```bash
-RUNTIME_PM_ON_AC=auto
-CPU_ENERGY_PERF_POLICY_ON_AC=balance_power
-WIFI_PWR_ON_AC=on
-```
+### Installed auto-cpufreq
 
 ### Install `powertop`
 
@@ -221,4 +180,4 @@ The system reduces significantly from 48 degree Celcius to 38 degree Celcius aft
 
 ### External mouse, keyboard delay a bit before responding
 
-This issue is due to USB suspend mode.
+This issue is due to USB suspend mode. Try to re-install system.
