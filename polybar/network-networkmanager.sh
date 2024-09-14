@@ -16,8 +16,9 @@ network_print() {
                     icon="%{F#474747}NET%{F-}"
 
                     signal=$(nmcli -t -f in-use,signal device wifi list ifname "$device" | grep "\*" | cut -d ':' -f 2)
-                    if [ "$signal" -lt 40 ]; then
-                        description="$description - %{F#f9cc18}$signal%%{F-}"
+                    if [ "$signal" -gt 10 ]; then
+                        icon="%{F#474747}SIG%{F-}"
+                        description="WIFI - %{F#f9cc18}$signal%%{F-}"
                     fi
                 elif [ "$type" = "802-3-ethernet" ]; then
                     icon="#2"
