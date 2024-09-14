@@ -38,7 +38,7 @@ makepkg -si
 yay -Syu i3-wm i3lock xorg-xinit xorg-server xorg-xrandr xdg-utils # choose noto-fonts
 yay -Syu alacritty
 yay -Syu rofi polybar feh picom dex
-yay -Syu libnotify
+yay -Syu libnotify dunst
 ```
 
 ### File explorer
@@ -102,6 +102,7 @@ ln -s ~/dotfiles-collection/polybar ~/.config/polybar
 ln -s ~/dotfiles-collection/rofi ~/.config/rofi
 ln -s ~/dotfiles-collection/alacritty ~/.config/alacritty
 ln -s ~/dotfiles-collection/picom ~/.config/picom
+ln -s ~/dotfiles-collection/dunst ~/.config/dunst
 ```
 
 ## Bluetooth
@@ -181,3 +182,6 @@ The system reduces significantly from 48 degree Celcius to 38 degree Celcius aft
 ### External mouse, keyboard delay a bit before responding
 
 This issue is due to USB suspend mode. Try to re-install system.
+
+### Use ibus-bamboo
+Set the combination to change typing method is Ctrl+Space

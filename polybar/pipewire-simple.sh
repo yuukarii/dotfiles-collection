@@ -14,22 +14,28 @@ getDefaultSource() {
 
 VOLUME=$(pamixer --get-volume)
 MUTED=$(pamixer --get-mute)
+MSG_TAG="myvolume"
 #SINK=$(getDefaultSink)
 #SOURCE=$(getDefaultSource)
 
 case $1 in
     "--up")
         if [ $VOLUME -lt 90 ]; then
-	    pamixer --increase 5
-	fi
+	      pamixer --increase 5
+        dunstify -a "changeVolume" -u low -i audio-volume-high -h string:x-dunst-stack-tag:$MSG_TAG \
+                 -h int:value:"$VOLUME" "Volume: ${VOLUME}%"
+	      fi
         ;;
     "--down")
         if [ $VOLUME -gt 0 ]; then
 	    pamixer --decrease 5
+        dunstify -a "changeVolume" -u low -i audio-volume-high -h string:x-dunst-stack-tag:$MSG_TAG \
+                 -h int:value:"$VOLUME" "Volume: ${VOLUME}%"
 	fi
         ;;
     "--mute")
         pamixer --toggle-mute
+      dunstify -a "changeVolume" -u low -i audio-volume-muted -h string:x-dunst-stack-tag:$MSG_TAG "Volume muted: $MUTED" 
         ;;
     *)
         #echo "Source: ${SOURCE} | Sink: ${VOLUME} ${SINK}"

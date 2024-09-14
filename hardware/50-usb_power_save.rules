@@ -1,0 +1,6 @@
+# /etc/udev/rules.d/50-usb_power_save.rules
+# blacklist for usb autosuspend
+ACTION=="add", SUBSYSTEM=="usb", ATTR{046d}=="05c6", ATTR{c31c}=="9205", GOTO="power_usb_rules_end"
+
+ACTION=="add", SUBSYSTEM=="usb", TEST=="power/control", ATTR{power/control}="auto"
+LABEL="power_usb_rules_end"

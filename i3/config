@@ -74,6 +74,9 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
 exec_always --no-startup-id feh --bg-scale ~/Nextcloud/4-media/3.1-pictures/3.1.2-wallpapers/gentle_warmth.png
 
+# Start dunst
+exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
+
 # Start ibus
 exec --no-startup-id ibus-daemon -rxRd
 
