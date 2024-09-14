@@ -43,7 +43,7 @@ yay -Syu libnotify
 
 sway
 ```bash
-yay -Syu sway swaylock swayidle swaybg polkit 
+yay -Syu sway swaylock swayidle swaybg polkit
 
 ```
 
