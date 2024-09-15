@@ -108,7 +108,7 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+q kill
 
-bindsym $mod+Shift+q exec rofi -show power-menu -modi power-menu:~/.config/bin/rofi-power-menu.sh
+bindsym $mod+Shift+q exec rofi -theme $HOME/.config/rofi/powermenu.rasi -show power-menu -modi power-menu:~/.config/bin/rofi-power-menu.sh
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run

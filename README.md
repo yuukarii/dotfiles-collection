@@ -20,7 +20,7 @@
     - Localization.
     - Network configuration. (Install `dhcpcd` and `networkmanager`).
     - Change root password.
-    - Install GRUB bootloader. Remember to generate the config file.
+    - Install GRUB bootloader. Remember to generate the configuration file.
     - Install `sudo`.
     - Create my user, change password add it to sudoers file.
 
@@ -135,17 +135,12 @@ Then do a daemon-reload before you `start/enable` the service with the `--user` 
 
 ```bash
 yay -Syu powertop
-```
-```bash
 sudo cp dotfiles-collection/hardware/powertop.service /etc/systemd/system/powertop.service
-```
-
-```bash
 systemctl enable powertop.service
 systemctl start powertop.service
 ```
 
-### Install `cpupower` (Not applied)
+### Install `cpupower` (use auto-cpufreq instead)
 
 ```bash
 yay -Syu cpupower
@@ -174,11 +169,13 @@ Set the combination to change typing method is Ctrl+Space
 Install `resolvconf`:
 ```bash
 pacman -Syu resolvconf # choose systemd-resolve dependency
+sudo tailscale up --accept-dns
 ```
 
-Start tailscale:
+### yay issue after pacman updating.
+
 ```bash
-sudo tailscale up --accept-dns
+sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
 
 
