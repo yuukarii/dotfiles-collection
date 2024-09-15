@@ -35,7 +35,7 @@ makepkg -si
 
 ### i3wm and xorg
 ```bash
-yay -Syu i3-wm i3lock xorg-xinit xorg-server xorg-xrandr xdg-utils # choose noto-fonts
+yay -Syu i3-wm xorg-xinit xorg-server xorg-xrandr xdg-utils # choose noto-fonts
 yay -Syu alacritty
 yay -Syu rofi polybar feh picom dex
 yay -Syu libnotify dunst
@@ -71,8 +71,11 @@ Install lazyvim.
 ## Login screen and lock screen
 ```bash
 yay -Syu lightdm lightdm-gtk-greeter
-
 sudo systemctl enable lightdm.service
+```
+
+```bash
+yay -Syu betterlockscreen
 ```
 
 ### Auto start i3 at login
@@ -96,6 +99,7 @@ ln -s ~/dotfiles-collection/alacritty ~/.config/alacritty
 ln -s ~/dotfiles-collection/picom ~/.config/picom
 ln -s ~/dotfiles-collection/dunst ~/.config/dunst
 ln -s ~/dotfiles-collection/bin ~/.config/bin
+ln -s ~/dotfiles-collection/betterlockscreen ~/.config/betterlockscreen
 ```
 
 ## Bluetooth

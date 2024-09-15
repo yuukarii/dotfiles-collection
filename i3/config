@@ -56,7 +56,8 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id betterlockscreen -u /usr/share/wallpapers/samurai.png
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -72,7 +73,7 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
-exec_always --no-startup-id feh --bg-scale ~/Nextcloud/4-media/3.1-pictures/3.1.2-wallpapers/gentle_warmth.png
+exec_always --no-startup-id feh --bg-scale /usr/share/wallpapers/gentle_warmth.png
 
 # Start dunst
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
@@ -108,7 +109,7 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+q kill
 
-bindsym $mod+Shift+q exec rofi -theme $HOME/.config/rofi/powermenu.rasi -show power-menu -modi power-menu:~/.config/bin/rofi-power-menu.sh
+bindsym $mod+Shift+q exec ~/.config/bin/power-menu.sh
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
