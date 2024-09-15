@@ -136,19 +136,8 @@ Then do a daemon-reload before you `start/enable` the service with the `--user` 
 ```bash
 yay -Syu powertop
 ```
-
-Create file `/etc/systemd/system/powertop.service`:
-```conf
-[Unit]
-Description=Powertop tunings
-
-[Service]
-Type=oneshot
-RemainAfterExit=yes
-ExecStart=/usr/bin/powertop --auto-tune
-
-[Install]
-WantedBy=multi-user.target
+```bash
+sudo cp dotfiles-collection/hardware/powertop.service /etc/systemd/system/powertop.service
 ```
 
 ```bash
@@ -174,7 +163,8 @@ The system reduces significantly from 48 degree Celcius to 38 degree Celcius aft
 
 ### External mouse, keyboard delay a bit before responding
 
-This issue is due to USB suspend mode. Try to re-install system.
+This issue is due to USB suspend mode.
+Use `powertop-autotune.sh` to fix this.
 
 ### Use ibus-bamboo
 Set the combination to change typing method is Ctrl+Space

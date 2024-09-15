@@ -4,7 +4,7 @@ Description=Powertop tunings
 [Service]
 Type=oneshot
 RemainAfterExit=yes
-ExecStart=/usr/bin/powertop --auto-tune
+ExecStart=/home/yuukarii/.config/bin/powertop-autotune.sh
 
 [Install]
 WantedBy=multi-user.target
