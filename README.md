@@ -70,17 +70,9 @@ Install lazyvim.
 
 ## Login screen and lock screen
 ```bash
-yay -Syu lightdm lightdm-slick-greeter
+yay -Syu lightdm lightdm-gtk-greeter
 
 sudo systemctl enable lightdm.service
-```
-
-Modify `/etc/lightdm/lightdm.conf`
-```conf
-[Seat:*]
-...
-greeter-session=lightdm-slick-greeter
-...
 ```
 
 ### Auto start i3 at login
@@ -103,6 +95,7 @@ ln -s ~/dotfiles-collection/rofi ~/.config/rofi
 ln -s ~/dotfiles-collection/alacritty ~/.config/alacritty
 ln -s ~/dotfiles-collection/picom ~/.config/picom
 ln -s ~/dotfiles-collection/dunst ~/.config/dunst
+ln -s ~/dotfiles-collection/bin ~/.config/bin
 ```
 
 ## Bluetooth
@@ -163,7 +156,7 @@ systemctl enable powertop.service
 systemctl start powertop.service
 ```
 
-### Install `cpupower`
+### Install `cpupower` (Not applied)
 
 ```bash
 yay -Syu cpupower
@@ -185,3 +178,17 @@ This issue is due to USB suspend mode. Try to re-install system.
 
 ### Use ibus-bamboo
 Set the combination to change typing method is Ctrl+Space
+
+### Tailscale DNS fight
+
+Install `resolvconf`:
+```bash
+pacman -Syu resolvconf # choose systemd-resolve dependency
+```
+
+Start tailscale:
+```bash
+sudo tailscale up --accept-dns
+```
+
+

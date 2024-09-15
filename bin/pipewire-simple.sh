@@ -21,27 +21,32 @@ MSG_TAG="myvolume"
 case $1 in
     "--up")
         if [ $VOLUME -lt 90 ]; then
-	      pamixer --increase 5
-        dunstify -a "changeVolume" -u low -i audio-volume-high -h string:x-dunst-stack-tag:$MSG_TAG \
-                 -h int:value:"$VOLUME" "Volume: ${VOLUME}%"
+            pamixer --increase 5
 	      fi
+        VOLUME=$(pamixer --get-volume)
+        dunstify -a "changeVolume" -u low -h string:x-dunst-stack-tag:$MSG_TAG \
+                -h int:value:"$VOLUME" "Volume: ${VOLUME}%"
         ;;
     "--down")
         if [ $VOLUME -gt 0 ]; then
-	    pamixer --decrease 5
-        dunstify -a "changeVolume" -u low -i audio-volume-high -h string:x-dunst-stack-tag:$MSG_TAG \
-                 -h int:value:"$VOLUME" "Volume: ${VOLUME}%"
-	fi
+	          pamixer --decrease 5
+	      fi
+        VOLUME=$(pamixer --get-volume)
+        dunstify -a "changeVolume" -u low -h string:x-dunst-stack-tag:$MSG_TAG \
+                -h int:value:"$VOLUME" "Volume: ${VOLUME}%"
         ;;
     "--mute")
         pamixer --toggle-mute
-      dunstify -a "changeVolume" -u low -i audio-volume-muted -h string:x-dunst-stack-tag:$MSG_TAG "Volume muted: $MUTED" 
+        MUTED=$(pamixer --get-mute)
+        if [ "$MUTED" = "true" ]; then
+            dunstify -a "changeVolume" -u low -h string:x-dunst-stack-tag:$MSG_TAG "Volume muted" 
+        fi
         ;;
     *)
         #echo "Source: ${SOURCE} | Sink: ${VOLUME} ${SINK}"
-	if [ "$MUTED" = "true" ]; then
-	    echo -e " %{F#474747}VOL%{F-} MUTED"
-	else
-	    echo -e " %{F#474747}VOL%{F-} ${VOLUME}%"
-	fi
+	  if [ "$MUTED" = "true" ]; then
+	      echo -e " %{F#474747}VOL%{F-} MUTED"
+	  else
+	      echo -e " %{F#474747}VOL%{F-} ${VOLUME}%"
+	  fi
 esac

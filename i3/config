@@ -64,8 +64,8 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 #exec --no-startup-id nm-applet
 
 # Start xrandr
-exec_always --no-startup-id $HOME/.config/i3/monitor-management.sh &
-bindsym $mod+Shift+m exec $HOME/.config/i3/monitor-management.sh &
+exec_always --no-startup-id $HOME/.config/bin/monitor-management.sh &
+bindsym $mod+Shift+m exec $HOME/.config/bin/monitor-management.sh &
 
 # Start picom
 exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
@@ -84,16 +84,16 @@ exec --no-startup-id ibus-daemon -rxRd
 #exec --no-startup-id /usr/bin/nextcloud --background &
 
 # Use a custom script to check volume with pipewire
-bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/polybar/pipewire-simple.sh --up
-bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/polybar/pipewire-simple.sh --down
-bindsym XF86AudioMute exec --no-startup-id ~/.config/polybar/pipewire-simple.sh --mute
+bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/bin/pipewire-simple.sh --up
+bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/bin/pipewire-simple.sh --down
+bindsym XF86AudioMute exec --no-startup-id ~/.config/bin/pipewire-simple.sh --mute
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Change brightness of laptop screen
 bindsym XF86MonBrightnessUp exec --no-startup-id brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec --no-startup-id brightnessctl set 5%-
 
-bindsym Print exec ~/.config/rofi/rofi-screenshot
+bindsym Print exec ~/.config/bin/rofi-screenshot
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -108,7 +108,7 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+q kill
 
-bindsym $mod+Shift+q exec rofi -show power-menu -modi power-menu:~/.config/rofi/rofi-power-menu.sh
+bindsym $mod+Shift+q exec rofi -show power-menu -modi power-menu:~/.config/bin/rofi-power-menu.sh
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
