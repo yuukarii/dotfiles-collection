@@ -131,6 +131,12 @@ systemctl --user status mpris-proxy.service
 
 Then do a daemon-reload before you `start/enable` the service with the `--user` flag.
 
+## Office
+
+```bash
+yay -Syu libreoffice-still zathura-pdf-poppler
+```
+
 ## Reduce heat of laptop
 
 ### Installed auto-cpufreq
