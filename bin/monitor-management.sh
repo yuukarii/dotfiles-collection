@@ -7,4 +7,5 @@ if echo "$monitor_info" | grep -q "HDMI-1"; then
   xrandr --output HDMI-1 --auto --right-of eDP-1
 else
   xrandr --output eDP-1 --auto
+  xrandr --output HDMI-1 --off
 fi
