@@ -137,6 +137,21 @@ Then do a daemon-reload before you `start/enable` the service with the `--user` 
 yay -Syu libreoffice-still zathura-pdf-poppler
 ```
 
+## Screenshot
+
+```bash
+yay -Syu slop ffcast xclip
+```
+
+## Virtualization
+
+```bash
+yay -Syu libvirt virt-manager qemu-desktop edk2-ovmf
+sudo systemctl enable libvirtd
+sudo systemctl start libvirtd
+usermod -aG libvirt <username>
+```
+
 ## Reduce heat of laptop
 
 ### Installed auto-cpufreq
