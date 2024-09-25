@@ -73,7 +73,7 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
-exec_always --no-startup-id feh --bg-scale /usr/share/wallpapers/lawson.jpg
+exec_always --no-startup-id feh --bg-scale /usr/share/wallpapers/tropic_island_night.jpg
 
 # Start dunst
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc

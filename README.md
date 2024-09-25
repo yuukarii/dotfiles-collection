@@ -44,6 +44,7 @@ yay -Syu libnotify dunst
 ### File explorer
 ```bash
 yay -Syu thunar nextcloud-client gvfs thunar-archive-plugin xarchiver tumbler
+yay -Syu ranger # Consider to use TUI instead of GUI -> save resources
 ```
 
 ### Install sound
