@@ -203,5 +203,6 @@ sudo tailscale up --accept-dns
 ```bash
 sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
 ```
+### Bluetooth headset connected automatically but not have audio
 
-
+Set trusted device.

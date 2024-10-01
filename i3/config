@@ -66,7 +66,10 @@ exec --no-startup-id betterlockscreen -u /usr/share/wallpapers/samurai.png
 
 # Start xrandr
 exec_always --no-startup-id $HOME/.config/bin/monitor-management.sh &
-bindsym $mod+Shift+m exec $HOME/.config/bin/monitor-management.sh &
+
+# Refresh hardware. Remember to add this line to /etc/sudoers
+# yuukarii ALL= NOPASSWD: /home/yuukarii/dotfiles-collection/bin/refresh-hardware.sh
+bindsym $mod+Shift+m exec --no-startup-id sudo $HOME/.config/bin/refresh-hardware.sh > /tmp/refresh-hardware.log
 
 # Start picom
 exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
