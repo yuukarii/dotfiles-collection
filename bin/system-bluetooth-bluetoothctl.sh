@@ -3,7 +3,7 @@
 bluetooth_print() {
   bluetoothctl | grep --line-buffered 'Device\|#' | while read -r REPLY; do
     if [ "$(systemctl is-active "bluetooth.service")" = "active" ]; then
-      echo -n "%{F#585b70}BLU%{F-}"
+      echo -n ""
 
       devices_paired=$(bluetoothctl devices Paired | grep Device | cut -d ' ' -f 2)
       counter=0
@@ -16,7 +16,17 @@ bluetooth_print() {
           device_battery_percent=$(echo "$device_info" | grep "Battery Percentage" | awk -F'[()]' '{print $2}')
 
           if [ -n "$device_battery_percent" ]; then
-            device_battery_icon="%{F#585b70}BBL%{F-}"
+            if [ $device_battery_percent -lt 10 ]; then
+              device_battery_icon="󰤾"
+            elif [ $device_battery_percent -lt 30 ]; then
+              device_battery_icon="󰥀"
+            elif [ $device_battery_percent -lt 50 ]; then
+              device_battery_icon="󰥂"
+            elif [ $device_battery_percent -lt 70 ]; then
+              device_battery_icon="󰥄"
+            else
+              device_battery_icon="󰥈"
+            fi
 
             device_output="$device_output $device_battery_icon $device_battery_percent%"
           fi
@@ -31,7 +41,7 @@ bluetooth_print() {
         fi
       done
 
-      printf '\n'
+      printf ' \n'
     else
       echo "#2"
     fi
