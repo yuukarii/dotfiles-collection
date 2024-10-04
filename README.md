@@ -206,3 +206,8 @@ sudo pacman -S --needed git base-devel && git clone https://aur.archlinux.org/ya
 ### Bluetooth headset connected automatically but not have audio
 
 Set trusted device.
+
+### Open alacritty with a provision command
+```bash
+alacritty --hold -e btop
+```

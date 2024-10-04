@@ -17,8 +17,9 @@ network_print() {
 
           signal=$(nmcli -t -f in-use,signal device wifi list ifname "$device" | grep "\*" | cut -d ':' -f 2)
           if [ "$signal" -gt 10 ]; then
-            icon="%{F#585b70}SIG%{F-}"
-            description="WIFI - %{F#f9cc18}$signal%%{F-}"
+            icon=""
+            # description=" %{F#585b70}$signal%%{F-}"
+            description=""
           fi
         elif [ "$type" = "802-3-ethernet" ]; then
           icon="#2"
@@ -38,18 +39,19 @@ network_print() {
         elif [ "$type" = "bluetooth" ]; then
           icon="#3"
         elif [ "$type" = "tun" ]; then
-          icon="%{F#585b70}TUN%{F-}"
+          icon="󰖂"
+          description=""
         fi
       elif [ "$state" = "activating" ]; then
-        icon="ACT"
+        icon="󱚵"
       elif [ "$state" = "deactivating" ]; then
-        icon="DAC"
+        icon="󱚵"
       fi
 
       if [ $counter -gt 0 ]; then
-        printf "  %s %s" "$icon" "$description"
+        printf " %s %s" "$icon" "%{F#585b70}$description%{F-}"
       else
-        printf "%s %s" "$icon" "$description"
+        printf "%s %s" "$icon" "%{F#585b70}$description%{F-}"
       fi
 
       counter=$((counter + 1))
