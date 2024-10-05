@@ -102,7 +102,10 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/bin/brightness-control.sh --up
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/bin/brightness-control.sh --down
 
-bindsym Print exec ~/.config/bin/rofi-screenshot
+# Screenshot bindings
+bindsym Print exec --no-startup-id ~/.config/bin/i3-screenshot-script.sh --full
+bindsym Shift+Print exec --no-startup-id ~/.config/bin/i3-screenshot-script.sh --select
+bindsym Control+Print exec --no-startup-id ~/.config/bin/i3-screenshot-script.sh --active
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod

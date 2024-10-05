@@ -67,12 +67,13 @@ yay -Syu gnome-keyring libsecret keepass
 yay -Syu neovim
 ```
 
-Install lazyvim.
+Install Lazyvim.
 
-## Login screen and lock screen
+## Theme, Login screen and lock screen
 ```bash
-yay -Syu lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings 
+yay -Syu lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 yay -Syu gnome-themes-extra gtk-engine-murrine colloid-gruvbox-gtk-theme-git lxappearance
+yay -Syu colloid-icon-theme-git
 sudo systemctl enable lightdm.service
 yay -Syu betterlockscreen
 ```
@@ -109,7 +110,7 @@ sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
 ```
 
-> Control media by bluetooth buttons
+> Control media by Bluetooth buttons
 
 Create file `~/.config/systemd/user/mpris-proxy.service`:
 ```conf
@@ -138,9 +139,8 @@ yay -Syu libreoffice-still zathura-pdf-poppler
 ```
 
 ## Screenshot
-
 ```bash
-yay -Syu slop ffcast xclip
+yay -Syu maim xclip dunst xdotool slop imagemagick
 ```
 
 ## Virtualization
