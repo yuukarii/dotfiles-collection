@@ -71,7 +71,8 @@ Install lazyvim.
 
 ## Login screen and lock screen
 ```bash
-yay -Syu lightdm lightdm-gtk-greeter
+yay -Syu lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings 
+yay -Syu gnome-themes-extra gtk-engine-murrine colloid-gruvbox-gtk-theme-git lxappearance
 sudo systemctl enable lightdm.service
 yay -Syu betterlockscreen
 ```
