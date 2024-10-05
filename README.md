@@ -101,6 +101,7 @@ ln -s ~/dotfiles-collection/picom ~/.config/picom
 ln -s ~/dotfiles-collection/dunst ~/.config/dunst
 ln -s ~/dotfiles-collection/bin ~/.config/bin
 ln -s ~/dotfiles-collection/betterlockscreen ~/.config/betterlockscreen
+ln -s ~/dotfiles-collection/zshrc ~/.zshrc
 ```
 
 ## Bluetooth
@@ -152,6 +153,14 @@ sudo systemctl enable libvirtd
 sudo systemctl start libvirtd
 usermod -aG libvirt <username>
 ```
+
+## Zsh 
+To list all installed shells, run:
+
+$ chsh -l
+And to set one as default for your user do:
+
+$ chsh -s /full/path/to/shell
 
 ## Reduce heat of laptop
 
@@ -210,4 +219,11 @@ Set trusted device.
 ### Open alacritty with a provision command
 ```bash
 alacritty --hold -e btop
+```
+
+### Fix issue automatic change font size depending on monitor
+
+Add this line to `~/.Xresources`
+```
+Xft.dpi: 96
 ```

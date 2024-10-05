@@ -45,9 +45,9 @@ case $1 in
 *)
   #echo "Source: ${SOURCE} | Sink: ${VOLUME} ${SINK}"
   if [ "$MUTED" = "true" ]; then
-    echo -e "   %{F#585b70}MUTED%{F-}"
+    echo -e "   %{F#504945}MUTED%{F-}"
   else
-    echo -e "   %{F#585b70}${VOLUME}%%{F-}"
+    echo -e "   %{F#504945}${VOLUME}%%{F-}"
   fi
   ;;
 esac

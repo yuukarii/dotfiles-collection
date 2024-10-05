@@ -49,9 +49,9 @@ network_print() {
       fi
 
       if [ $counter -gt 0 ]; then
-        printf " %s %s" "$icon" "%{F#585b70}$description%{F-}"
+        printf " %s %s" "$icon" "%{F#665c54}$description%{F-}"
       else
-        printf "%s %s" "$icon" "%{F#585b70}$description%{F-}"
+        printf "%s %s" "$icon" "%{F#665c54}$description%{F-}"
       fi
 
       counter=$((counter + 1))

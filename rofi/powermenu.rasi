@@ -34,7 +34,9 @@ prompt {
 
 textbox-prompt-colon {
     expand: 			            false;
-    str: 			                "";
+    str: 			                "󰐥";
+    text-align:               center;
+    vertical-align:           0.5;
     border-radius:                  100%;
     background-color:               @SEL;
     text-color:                     @FG;

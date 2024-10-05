@@ -10,32 +10,37 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 # Catppuccin mocha
-set $rosewater #f5e0dc
-set $flamingo #f2cdcd
-set $pink #f5c2e7
-set $mauve #cba6f7
-set $red #f38ba8
-set $maroon #eba0ac
-set $peach #fab387
-set $yellow #f9e2af
-set $green #a6e3a1
-set $teal #94e2d5
-set $sky #89dceb
-set $sapphire #74c7ec
-set $blue #89b4fa
-set $lavender #b4befe
-set $text #cdd6f4
-set $subtext1 #bac2de
-set $subtext0 #a6adc8
-set $overlay2 #9399b2
-set $overlay1 #7f849c
-set $overlay0 #6c7086
-set $surface2 #585b70
-set $surface1 #45475a
-set $surface0 #313244
-set $base #1e1e2e
-set $mantle #181825
-set $crust #11111b
+set $bg #282828
+set $red #cc241d
+set $green #98971a
+set $yellow #d79921
+set $blue #458588
+set $purple #b16286
+set $aqua #689d6a
+set $gray #a89984
+set $gray2 #928374
+set $red2 #fb4934
+set $green2 #b8bb26
+set $yellow2 #fabd2f
+set $blue2 #83a598
+set $purple2 #d3869b
+set $aqua2 ##8ec07c
+set $fg #ebdbb2
+set $bg0_h #1d2021
+set $bg0 #282828
+set $bg1 #3c3836
+set $bg2 #504945
+set $bg3 #665c54
+set $bg4 #7c6f64
+set $orange #d65d0e
+set $transparent #ff00000
+set $bg0_s #32302f
+set $fg4 #a89984
+set $fg3 #bdae93
+set $fg2 #d5c4a1
+set $fg1 #ebdbb2
+set $fg0 #fbf1c7
+set $orange2 #fe8019
 
 set $mod Mod4
 
@@ -57,7 +62,7 @@ exec --no-startup-id dex --autostart --environment i3
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id betterlockscreen -u /usr/share/wallpapers/samurai.png
+exec --no-startup-id betterlockscreen -u /usr/share/wallpapers/gruvbox_frieren.png
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -76,7 +81,7 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
-exec_always --no-startup-id feh --bg-scale /usr/share/wallpapers/tropic_island_night.jpg
+exec_always --no-startup-id feh --bg-scale /usr/share/wallpapers/gruvbox_solar-system.jpg
 
 # Start dunst
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
@@ -246,13 +251,13 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# target                 title     bg    text   indicator  border
-client.focused           $lavender $base $text  $red       $lavender
-client.focused_inactive  $overlay0 $base $text  $red       $overlay0
-client.unfocused         $overlay0 $base $text  $red       $overlay0
-client.urgent            $peach    $base $peach $overlay0  $peach
-client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
-client.background        $base
+# target                 title    bg    text    indicator   border
+client.focused           $fg2     $bg   $fg     $purple2    $fg2
+client.focused_inactive  $gray    $bg   $fg     $purple     $gray
+client.unfocused         $gray    $bg   $fg     $purple     $gray
+client.urgent            $orange  $bg   $orange $gray       $orange
+client.placeholder       $gray    $bg   $fg     $gray       $gray
+client.background        $bg
 
 # Configure 5px of space between windows and to the screen edges.
 gaps inner 5px

@@ -29,7 +29,9 @@ bluetooth_print() {
           fi
 
           # device_output="$device_output $device_battery_icon $device_battery_percent%"
-          device_output="$device_battery_icon %{F#585b70}${device_battery_percent}%%{F-}"
+          device_output="$device_battery_icon %{F#504945}${device_battery_percent}%%{F-} "
+        else
+          device_output=" $device_output "
         fi
 
         if [ $counter -gt 0 ]; then
@@ -42,7 +44,10 @@ bluetooth_print() {
       fi
     done
 
-    printf ' \n'
+    if [ $counter -eq 0 ]; then
+      echo " "
+    fi
+    printf '\n'
   else
     echo "#2"
   fi
