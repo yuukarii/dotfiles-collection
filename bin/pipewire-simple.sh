@@ -24,7 +24,7 @@ case $1 in
     pamixer --increase 5
   fi
   VOLUME=$(pamixer --get-volume)
-  dunstify -a "changeVolume" -u low -h string:x-dunst-stack-tag:$MSG_TAG \
+  dunstify -a "changeVolume" -t 1000 -u low -h string:x-dunst-stack-tag:$MSG_TAG \
     -h int:value:"$VOLUME" "Volume: ${VOLUME}%"
   ;;
 "--down")
@@ -32,14 +32,14 @@ case $1 in
     pamixer --decrease 5
   fi
   VOLUME=$(pamixer --get-volume)
-  dunstify -a "changeVolume" -u low -h string:x-dunst-stack-tag:$MSG_TAG \
+  dunstify -a "changeVolume" -t 1000 -u low -h string:x-dunst-stack-tag:$MSG_TAG \
     -h int:value:"$VOLUME" "Volume: ${VOLUME}%"
   ;;
 "--mute")
   pamixer --toggle-mute
   MUTED=$(pamixer --get-mute)
   if [ "$MUTED" = "true" ]; then
-    dunstify -a "changeVolume" -u low -h string:x-dunst-stack-tag:$MSG_TAG "Volume muted"
+    dunstify -a "changeVolume" -t 1000 -u low -h string:x-dunst-stack-tag:$MSG_TAG "Volume muted"
   fi
   ;;
 *)

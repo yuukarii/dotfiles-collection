@@ -1,18 +1,20 @@
 
 [global]
-frame_color = "#89b4fa"
+frame_color = "#d5c4a1"
 separator_color= frame
+highlight = "#d5c4a1"
 
 [urgency_low]
-background = "#1e1e2e"
-foreground = "#cdd6f4"
+background = "#282828"
+foreground = "#ebdbb2"
 
 [urgency_normal]
-background = "#1e1e2e"
-foreground = "#cdd6f4"
+background = "#282828"
+foreground = "#ebdbb2"
+highlight = "#d5c4a1"
 
 [urgency_critical]
-background = "#1e1e2e"
-foreground = "#cdd6f4"
-frame_color = "#fab387"
+background = "#282828"
+foreground = "#ebdbb2"
+frame_color = "#d65d0e"
 

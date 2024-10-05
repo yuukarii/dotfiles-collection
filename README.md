@@ -73,9 +73,6 @@ Install lazyvim.
 ```bash
 yay -Syu lightdm lightdm-gtk-greeter
 sudo systemctl enable lightdm.service
-```
-
-```bash
 yay -Syu betterlockscreen
 ```
 
@@ -154,13 +151,12 @@ sudo systemctl start libvirtd
 usermod -aG libvirt <username>
 ```
 
-## Zsh 
+## Change shell to Zsh
 To list all installed shells, run:
-
-$ chsh -l
-And to set one as default for your user do:
-
-$ chsh -s /full/path/to/shell
+```bash
+chsh -l
+chsh -s /full/path/to/shell
+```
 
 ## Reduce heat of laptop
 
