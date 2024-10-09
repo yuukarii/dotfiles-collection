@@ -224,3 +224,22 @@ Add this line to `~/.Xresources`
 ```
 Xft.dpi: 96
 ```
+
+### pacman tips
+```bash
+sudo pacman -S reflector
+cp /etc/pacman.d/mirrorlist /etc/pacman.d/mirrorlist.bkp
+sudo reflector --country 'Vietnam' --latest 5 --age 2 --fastest 5 --protocol https --sort rate --save /etc/pacman.d/mirrorlist
+```
+
+Pacman configurations `/etc/pacman.conf`:
+```bash
+# Misc options
+#UseSyslog
+Color
+#NoProgressBar
+CheckSpace
+#VerbosePkgLists
+ParallelDownloads = 5
+ILoveCandy
+```
