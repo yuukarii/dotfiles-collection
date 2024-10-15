@@ -86,7 +86,7 @@ exec /usr/bin/i3
 
 ### Install fonts
 ```bash
-yay -Syu noto-fonts-cjk ttf-firacode-nerd
+yay -Syu noto-fonts-cjk ttf-firacode-nerd rofi-emoji noto-fonts-emoji
 ```
 
 ## Install dotfiles

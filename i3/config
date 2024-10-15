@@ -111,6 +111,9 @@ bindsym Print exec --no-startup-id ~/.config/bin/i3-screenshot-script.sh --full
 bindsym Shift+Print exec --no-startup-id ~/.config/bin/i3-screenshot-script.sh --select
 bindsym Control+Print exec --no-startup-id ~/.config/bin/i3-screenshot-script.sh --active
 
+# Emoji picker
+bindsym $mod+comma exec --no-startup-id rofi -modi emoji -show emoji
+
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
