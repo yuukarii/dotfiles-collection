@@ -243,3 +243,10 @@ CheckSpace
 ParallelDownloads = 5
 ILoveCandy
 ```
+
+### feh tips
+
+open image with this command in default application:
+```bash
+feh --scale-down --auto-zoom --start-at 
+```

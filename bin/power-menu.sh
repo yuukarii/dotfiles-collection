@@ -70,14 +70,18 @@ run_cmd() {
   echo "$selected"
   if [[ "$selected" == "$yes" ]]; then
     if [[ $1 == '--shutdown' ]]; then
+      sleep 5
       poweroff
     elif [[ $1 == '--reboot' ]]; then
+      sleep 5
       reboot
     elif [[ $1 == '--suspend' ]]; then
+      sleep 5
       mpc -q pause
       amixer set Master mute
       systemctl suspend
     elif [[ $1 == '--logout' ]]; then
+      sleep 5
       pkill -KILL -u $USER
     fi
   else
