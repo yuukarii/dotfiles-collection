@@ -161,7 +161,9 @@ chsh -s /full/path/to/shell
 
 ## Reduce heat of laptop
 
-### Installed auto-cpufreq
+### Install TLP
+
+Follow this instruction: [TLP main page](https://linrunner.de/tlp/index.html).
 
 ### Install `powertop`
 

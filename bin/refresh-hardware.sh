@@ -7,3 +7,7 @@ for i in $HIDDEVICES; do
   echo -n "Enabling " | cat - /sys/bus/usb/devices/$i/product
   echo 'on' >/sys/bus/usb/devices/$i/power/control
 done
+
+tailscale down
+sleep 2
+tailscale up
