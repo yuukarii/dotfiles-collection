@@ -42,15 +42,7 @@ confirm_cmd() {
     -p 'Confirm' \
     -mesg 'Are you Sure?' \
     \
-    -theme $HOME/.config/rofi/powermenu.rasi # -theme-str 'mainbox {children: [ "message", "listview" ];}' \
-  # -theme-str 'listview {columns: 2; lines: 1;}' \
-  # -theme-str 'element-text {horizontal-align: 0.5;}' \
-  # -theme-str 'textbox {horizontal-align: 0.5;}' \
-  # -theme-str 'inputbar {children: [prompt, textbox-prompt-colon, entry];}' \
-  # -theme-str 'textbox-prompt-colon {str: "";}' \
-  # -theme-str 'entry {enabled: false;}' \
-  # -theme-str 'listview {border: 0px;}' \
-
+    -theme $HOME/.config/rofi/powermenu.rasi
 }
 
 # Ask for confirmation
@@ -70,18 +62,20 @@ run_cmd() {
   echo "$selected"
   if [[ "$selected" == "$yes" ]]; then
     if [[ $1 == '--shutdown' ]]; then
-      sleep 2
+      dunstify -a "poweroff" -t 3000 -u low -h string:x-dunst-stack-tag:poweroff \
+        "Shutting down ..."
       poweroff
     elif [[ $1 == '--reboot' ]]; then
-      sleep 2
+      dunstify -a "reboot" -t 3000 -u low -h string:x-dunst-stack-tag:reboot \
+        "Rebooting ..."
       reboot
     elif [[ $1 == '--suspend' ]]; then
-      sleep 2
+      dunstify -a "suspend" -t 3000 -u low -h string:x-dunst-stack-tag:suspend \
+        "Suspending ..."
       mpc -q pause
       amixer set Master mute
       systemctl suspend
     elif [[ $1 == '--logout' ]]; then
-      sleep 2
       pkill -KILL -u $USER
     fi
   else
