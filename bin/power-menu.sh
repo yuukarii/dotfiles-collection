@@ -1,23 +1,7 @@
 #!/usr/bin/env bash
-
-## Original Author : Aditya Shakya (adi1090x)
-#
-## Current Author : Jackson Novak (Oglo12)
-#
-## Github : @adi1090x
-#
-## Codeberg : @Oglo12
-#
-## Rofi   : Power Menu
-#
-## Available Styles
-#
-## style-1   style-2   style-3   style-4   style-5
-## style-6   style-7   style-8   style-9   style-10
-
 # Current Theme
-dir="$HOME/.config/rofi"
-theme='powermenu'
+# theme="$HOME/.config/rofi/powermenu.rasi"
+theme="$HOME/.config/rofi/powermenu.rasi"
 
 # Options
 shutdown='   Shutdown'
@@ -30,19 +14,16 @@ no='   No'
 
 # Rofi CMD
 rofi_cmd() {
-  rofi -theme $HOME/.config/rofi/powermenu.rasi -dmenu -p 'Power'
+  rofi -theme $theme -dmenu -p 'Power'
 }
 
 # Confirmation CMD
 confirm_cmd() {
-  # rofi -theme-str 'window {location: center; anchor: center; fullscreen: false; width: 300px;}' \
   rofi \
-    \
     -dmenu \
     -p 'Confirm' \
     -mesg 'Are you Sure?' \
-    \
-    -theme $HOME/.config/rofi/powermenu.rasi
+    -theme $theme
 }
 
 # Ask for confirmation

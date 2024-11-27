@@ -131,7 +131,7 @@ bindsym $mod+Shift+q exec ~/.config/bin/power-menu.sh
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec --no-startup-id "rofi -modi drun,run -show drun"
+bindsym $mod+d exec --no-startup-id "rofi -modi drun,window -show drun"
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -264,11 +264,11 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # target                 title    bg    text    indicator   border
-client.focused           $fg2     $bg   $fg     $purple2    $fg2
-client.focused_inactive  $gray    $bg   $fg     $purple     $gray
-client.unfocused         $gray    $bg   $fg     $purple     $gray
+client.focused           $fg2     $bg   $fg     $purple2    $orange
+client.focused_inactive  $gray    $bg   $fg     $purple     $bg0
+client.unfocused         $gray    $bg   $fg     $purple     $bg0
 client.urgent            $orange  $bg   $orange $gray       $orange
-client.placeholder       $gray    $bg   $fg     $gray       $gray
+client.placeholder       $gray    $bg   $fg     $gray       $bg0
 client.background        $bg
 
 # Configure 5px of space between windows and to the screen edges.

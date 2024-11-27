@@ -67,8 +67,6 @@ yay -Syu gnome-keyring libsecret keepass
 yay -Syu neovim
 ```
 
-Install Lazyvim.
-
 ## Theme, Login screen and lock screen
 ```bash
 yay -Syu lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
@@ -101,6 +99,7 @@ ln -s ~/dotfiles-collection/dunst ~/.config/dunst
 ln -s ~/dotfiles-collection/bin ~/.config/bin
 ln -s ~/dotfiles-collection/betterlockscreen ~/.config/betterlockscreen
 ln -s ~/dotfiles-collection/zshrc ~/.zshrc
+ln -s ~/dotfiles-collection/nvim ~/.config/nvim
 ```
 
 ## Bluetooth
@@ -220,7 +219,7 @@ Set trusted device.
 alacritty --hold -e btop
 ```
 
-### Fix issue automatic change font size depending on monitor
+### Alacritty: Fix issue automatic change font size depending on monitor
 
 Add this line to `~/.Xresources`
 ```
