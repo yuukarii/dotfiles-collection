@@ -7,7 +7,7 @@
 - Connect to the internet via `iwctl`.
 - Update the system clock.
 - Partition the disks.
-    - Example layout: `/boot` 1GB, `swap` = RAM = 16GB, `/` the rest of disk.
+    - Example layout: `/boot` 1GB, `swap` = RAM = 16GB, `/` = 100GB, `/home` the rest of disk.
 - Format the partitions.
 - Mount the file systems.
 - Select the mirrors.
@@ -25,6 +25,7 @@
     - Create my user, change password add it to sudoers file.
 
 ## Install i3wm and necessary packages
+
 ### Install `yay`
 ```bash
 sudo pacman -S --needed git base-devel
@@ -99,7 +100,6 @@ ln -s ~/dotfiles-collection/dunst ~/.config/dunst
 ln -s ~/dotfiles-collection/bin ~/.config/bin
 ln -s ~/dotfiles-collection/betterlockscreen ~/.config/betterlockscreen
 ln -s ~/dotfiles-collection/zshrc ~/.zshrc
-ln -s ~/dotfiles-collection/nvim ~/.config/nvim
 ```
 
 ## Bluetooth
@@ -158,6 +158,8 @@ chsh -l
 chsh -s /full/path/to/shell
 ```
 
+Remember changing for root user also.
+
 ## Reduce heat of laptop
 
 ### Install TLP
@@ -195,7 +197,7 @@ This issue is due to USB suspend mode.
 Use `powertop-autotune.sh` to fix this.
 
 ### Use ibus-bamboo
-Set the combination to change typing method is Ctrl+Space
+Set the combination to change typing method is `Ctrl+Space`
 
 ### Tailscale DNS fight
 
@@ -241,25 +243,7 @@ ILoveCandy
 
 ### feh tips
 
-open image with this command in default application:
+Set this command to open with option of images:
 ```bash
 feh --scale-down --auto-zoom --start-at 
 ```
-
-## neovim
-
-### Keymaps
-Telescope
-
-n { "ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
-n { "fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
-n { "fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
-n { "gr", builtin.lsp_references, desc = "Lists LSP references" },
-n { "gr", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Lists Diagnostics" },
-
-ca Show code action
-n gd go to definition
-n gcc comment one line
-v gc
-n Ctrl + L turn off highlight
-Ctrl W Ctrl D show diagnostics under the cursor
