@@ -245,3 +245,21 @@ open image with this command in default application:
 ```bash
 feh --scale-down --auto-zoom --start-at 
 ```
+
+## neovim
+
+### Keymaps
+Telescope
+
+n { "ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+n { "fg", "<cmd>Telescope live_grep<cr>", desc = "Live Grep" },
+n { "fb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+n { "gr", builtin.lsp_references, desc = "Lists LSP references" },
+n { "gr", "<cmd>Telescope diagnostics bufnr=0<cr>", desc = "Lists Diagnostics" },
+
+ca Show code action
+n gd go to definition
+n gcc comment one line
+v gc
+n Ctrl + L turn off highlight
+Ctrl W Ctrl D show diagnostics under the cursor
