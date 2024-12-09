@@ -137,6 +137,12 @@ Then do a daemon-reload before you `start/enable` the service with the `--user` 
 yay -Syu libreoffice-still zathura-pdf-poppler
 ```
 
+Add this line to `~/.config/zathura/zathurarc`:
+```
+set selection-clipboard clipboard
+```
+to copy text to clipboard.
+
 ## Screenshot
 ```bash
 yay -Syu maim xclip dunst xdotool slop imagemagick

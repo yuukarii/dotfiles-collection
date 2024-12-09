@@ -8,6 +8,7 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
+for_window [class="^.*"] border pixel 0
 
 # Gruvbox
 set $bg #282828
@@ -81,7 +82,7 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
-exec_always --no-startup-id feh --bg-fill /usr/share/wallpapers/current-background.png
+exec_always --no-startup-id feh --bg-fill /usr/share/wallpapers/current-background.jpg
 
 # Start battery alert
 exec_always --no-startup-id $HOME/.config/bin/battery-low-alert.sh
@@ -272,7 +273,7 @@ client.placeholder       $gray    $bg   $fg     $gray       $bg0
 client.background        $bg
 
 # Configure 5px of space between windows and to the screen edges.
-gaps inner 5px
+gaps inner 10px
 
 # Configure an additional 5px of extra space to the screen edges,
 # for a total gap of 10px to the screen edges, and 5px between windows.
@@ -282,7 +283,7 @@ gaps outer 2px
 smart_gaps inverse_outer
 
 # default window borders
-default_border pixel 2
+default_border pixel 0
 default_floating_border 1pixel
 
 # Hides vertical and horizontal borders when there's only one window.

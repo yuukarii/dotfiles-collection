@@ -13,7 +13,6 @@ window {
     transparency:                   "real";
     background-color:               @BG;
     text-color:                     @FG;
-    border:                         2px;
     border-color:                   @BDR;
     border-radius:                  0px;
     width:                          300px;
@@ -81,7 +80,7 @@ case-indicator {
 listview {
     background-color:               @BG;
     columns:                        1;
-    lines:			    7;
+    lines:                          5;
     spacing:                        4px;
     cycle:                          true;
     dynamic:                        true;
