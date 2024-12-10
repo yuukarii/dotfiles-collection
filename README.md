@@ -97,6 +97,7 @@ ln -s ~/dotfiles-collection/rofi ~/.config/rofi
 ln -s ~/dotfiles-collection/alacritty ~/.config/alacritty
 ln -s ~/dotfiles-collection/picom ~/.config/picom
 ln -s ~/dotfiles-collection/dunst ~/.config/dunst
+ln -s ~/dotfiles-collection/fastfetch ~/.config/fastfetch
 ln -s ~/dotfiles-collection/bin ~/.config/bin
 ln -s ~/dotfiles-collection/betterlockscreen ~/.config/betterlockscreen
 ln -s ~/dotfiles-collection/zshrc ~/.zshrc

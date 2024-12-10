@@ -2,6 +2,7 @@
 # Current Theme
 # theme="$HOME/.config/rofi/powermenu.rasi"
 theme="$HOME/.config/rofi/powermenu.rasi"
+theme_confirm="$HOME/.config/rofi/confirm.rasi"
 
 # Options
 shutdown='   Shutdown'
@@ -23,7 +24,7 @@ confirm_cmd() {
     -dmenu \
     -p 'Confirm' \
     -mesg 'Are you Sure?' \
-    -theme $theme
+    -theme $theme_confirm
 }
 
 # Ask for confirmation
