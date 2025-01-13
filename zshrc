@@ -90,5 +90,6 @@ alias ll='ls -l'
 alias la='ls -A'
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
+export PATH=$PATH:/home/yuukarii/dotfiles-collection/bin
 
 eval "$(starship init zsh)"
