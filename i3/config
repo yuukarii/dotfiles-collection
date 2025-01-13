@@ -8,7 +8,7 @@
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
-for_window [class="^.*"] border pixel 0
+#for_window [class="^.*"] border pixel 0
 
 # Gruvbox
 set $bg #282828
@@ -283,7 +283,7 @@ gaps outer 2px
 smart_gaps inverse_outer
 
 # default window borders
-default_border pixel 0
+default_border pixel 2
 default_floating_border 1pixel
 
 # Hides vertical and horizontal borders when there's only one window.
