@@ -90,6 +90,9 @@ alias ll='ls -l'
 alias la='ls -A'
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=#999'
-export PATH=$PATH:/home/yuukarii/dotfiles-collection/bin
+export PATH=$PATH:$HOME/dotfiles-collection/bin
+alias toggle_vpn='sudo $HOME/dotfiles-collection/bin/toggle_openvpn.sh'
 
 eval "$(starship init zsh)"
+echo
+pfetch

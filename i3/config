@@ -80,7 +80,7 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 
 # Start polybar
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh &
-exec_always --no-startup-id feh --bg-fill /usr/share/wallpapers/current-background.jpg
+exec_always --no-startup-id feh --bg-fill /usr/share/wallpapers/current-background.png
 
 # Start battery alert
 exec_always --no-startup-id $HOME/.config/bin/battery-low-alert.sh
@@ -126,7 +126,8 @@ bindsym $mod+Return exec alacritty
 # kill focused window
 bindsym $mod+q kill
 
-bindsym $mod+Shift+q exec ~/.config/bin/power-menu.sh
+bindsym $mod+Shift+p exec ~/.config/bin/power-menu.sh
+bindsym $mod+Shift+f exec poweroff
 
 # start dmenu (a program launcher)
 #bindsym $mod+d exec --no-startup-id dmenu_run
@@ -141,6 +142,7 @@ bindsym $mod+d exec --no-startup-id "rofi -modi drun,window -show drun"
 #for_window [class="^.*"] border pixel 0
 for_window [class="pavucontrol"] floating enable
 for_window [class="KeePass2"] floating enable
+for_window [class="Thunar"] floating enable
 
 # change focus
 # bindsym $mod+h focus left
@@ -179,6 +181,10 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
+
+default_orientation vertical
+for_window [class=".*"] split toggle
+bindsym $mod+shift+q split toggle kill
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle

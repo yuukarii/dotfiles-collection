@@ -19,9 +19,9 @@ if [[ $? -eq 0 ]]; then
   tailscale up --accept-dns
 else
   echo "OpenVPN is not running"
-  echo "Spawn OpenVPN session"
   echo "Turn off Tailscale"
   tailscale down
   sleep 2
+  echo "Spawn OpenVPN session"
   openvpn --config /home/yuukarii/THM/dont_delete/undertak3r.ovpn --daemon tryhackme
 fi
