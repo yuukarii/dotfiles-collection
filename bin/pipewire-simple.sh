@@ -21,7 +21,7 @@ MSG_TAG="myvolume"
 case $1 in
 "--up")
   if [ $VOLUME -lt 90 ]; then
-    pamixer --increase 5
+    pamixer --increase 2
   fi
   VOLUME=$(pamixer --get-volume)
   dunstify -a "changeVolume" -t 1000 -u low -h string:x-dunst-stack-tag:$MSG_TAG \
@@ -29,7 +29,7 @@ case $1 in
   ;;
 "--down")
   if [ $VOLUME -gt 0 ]; then
-    pamixer --decrease 5
+    pamixer --decrease 2
   fi
   VOLUME=$(pamixer --get-volume)
   dunstify -a "changeVolume" -t 1000 -u low -h string:x-dunst-stack-tag:$MSG_TAG \
