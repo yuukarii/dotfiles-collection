@@ -9,37 +9,10 @@
 #
 
 # Gruvbox
-set $bg #282828
-set $red #cc241d
-set $green #98971a
-set $yellow #d79921
-set $blue #458588
-set $purple #b16286
-set $aqua #689d6a
-set $gray #a89984
-set $gray2 #928374
-set $red2 #fb4934
-set $green2 #b8bb26
-set $yellow2 #fabd2f
-set $blue2 #83a598
-set $purple2 #d3869b
-set $aqua2 ##8ec07c
-set $fg #ebdbb2
-set $bg0_h #1d2021
-set $bg0 #282828
-set $bg1 #3c3836
-set $bg2 #504945
-set $bg3 #665c54
-set $bg4 #7c6f64
-set $orange #d65d0e
-set $transparent #ff00000
-set $bg0_s #32302f
-set $fg4 #a89984
-set $fg3 #bdae93
-set $fg2 #d5c4a1
-set $fg1 #ebdbb2
-set $fg0 #fbf1c7
-set $orange2 #fe8019
+set $bg #2D353B
+set $indicator #e67e80
+
+set $border_focus #A7C080
 
 set $mod Mod4
 
@@ -85,6 +58,9 @@ exec_always --no-startup-id feh --bg-fill /usr/share/wallpapers/current-backgrou
 # Start battery alert
 exec_always --no-startup-id $HOME/.config/bin/battery-low-alert.sh
 exec_always --no-startup-id $HOME/.config/bin/battery-status-notify.sh
+
+# Start rest alert
+exec_always --no-startup-id $HOME/.config/bin/rest-reminder.sh
 
 # Start dunst
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
@@ -270,19 +246,19 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # target                 title    bg    text    indicator   border
-client.focused           $fg2     $bg   $fg     $purple2    $orange
-client.focused_inactive  $gray    $bg   $fg     $purple     $bg0
-client.unfocused         $gray    $bg   $fg     $purple     $bg0
-client.urgent            $orange  $bg   $orange $gray       $orange
-client.placeholder       $gray    $bg   $fg     $gray       $bg0
+client.focused           $fg2     $bg   $fg     $indicator     $border_focus
+client.focused_inactive  $gray    $bg   $fg     $indicator     $bg
+client.unfocused         $gray    $bg   $fg     $indicator     $bg
+client.urgent            $orange  $bg   $orange $indicator     $border_focus
+client.placeholder       $gray    $bg   $fg     $indicator     $bg
 client.background        $bg
 
 # Configure 5px of space between windows and to the screen edges.
-gaps inner 10px
+gaps inner 20px
 
 # Configure an additional 5px of extra space to the screen edges,
 # for a total gap of 10px to the screen edges, and 5px between windows.
-gaps outer 2px
+gaps outer 10px
 
 # Only enable outer gaps when there is exactly one window or split container on the workspace.
 smart_gaps inverse_outer

@@ -1,7 +1,7 @@
 
 [global]
 frame_color = "#d5c4a1"
-frame_width = 0
+frame_width = 2
 separator_color= frame
 highlight = "#d5c4a1"
 

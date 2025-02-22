@@ -71,7 +71,7 @@ yay -Syu neovim
 ## Theme, Login screen and lock screen
 ```bash
 yay -Syu lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
-yay -Syu gnome-themes-extra gtk-engine-murrine colloid-gruvbox-gtk-theme-git lxappearance
+yay -Syu gnome-themes-extra gtk-engine-murrine colloid-everforest-gtk-theme-git lxappearance
 yay -Syu colloid-icon-theme-git
 sudo systemctl enable lightdm.service
 yay -Syu betterlockscreen
@@ -152,7 +152,7 @@ yay -Syu maim xclip dunst xdotool slop imagemagick
 ## Virtualization
 
 ```bash
-yay -Syu libvirt virt-manager qemu-desktop edk2-ovmf
+yay -Syu libvirt virt-manager qemu-desktop edk2-ovmf virt-viewer
 sudo systemctl enable libvirtd
 sudo systemctl start libvirtd
 usermod -aG libvirt <username>
