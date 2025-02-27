@@ -1,0 +1,196 @@
+/* Created   by https://github.com/rxyhn 
+   Designed  by https://github.com/rxyhn
+   Maintaned by https://github.com/rxyhn
+*/
+
+// Global
+*{
+  all: unset;
+}
+
+// Variable Color's
+$background: #2D353B;
+$foreground: #D3C6AA;
+
+$black: #343F44;
+$black4: #4F585E;
+$gray: #859289;
+$red: #E67E80;
+$green: #73DACA;
+$yellow: #DBBC7F;
+$blue: #7FBBB3;
+$magenta: #D699B6;
+$cyan: #7DCFFF;
+$white: $foreground;
+
+// EWW BAR
+.eww_bar{
+  background-color: $background;
+  padding: 5px;
+  border-radius: 7px;
+}
+
+.focused-workspace {
+  font-family: Comic Mono;
+  background-color: $black;
+  padding: 8px 15px 9px 15px;
+  margin: 3px 1px 3px 1px;
+  border-radius: 5px;
+  color: $foreground;
+  font-weight: bold;
+  font-size: 16px;
+}
+.active-workspace {
+  font-family: Comic Mono;
+  color: $foreground;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.regular {
+  font-family: Comic Mono;
+  color: $black4;
+  font-size: 16px;
+}
+.urgent-workspace {
+  font-family: Comic Mono;
+  color: $red;
+  font-size: 16px;
+}
+
+// Control Panel
+.control {
+  padding: 0px;
+  font-family: FiraCode Nerd Font Mono;
+  font-size: 18px;
+  background-color: $black;
+  border-radius: 5px;
+}
+.bat{
+  font-size: 20px;
+  padding-right: 14px;
+  padding-top: 10px;
+  color: $blue;
+}
+.wifi-icon{
+  color: $magenta;
+  font-size: 30px;
+  padding-left: 2px;
+  padding-top: 8px;
+}
+.brightness-icon{
+  color: $yellow;
+  font-size: 30px;
+}
+.volume-icon{
+  color: $green;
+  font-size: 26px;
+  padding-left: 2px;
+  padding-bottom: 6px;
+}
+
+scale trough {
+  all: unset;
+  background-color: $background;
+  border-radius: 5px;
+  min-height: 80px;
+  min-width: 10px;
+}
+.bribar trough highlight {
+  background-color: $yellow;
+  border-radius: 5px;
+}
+.volbar trough highlight {
+  background-color: $green;
+  border-radius: 5px;
+}
+.systray {
+  background-color: $black;
+  border-radius: 5px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+// Clock
+.time {
+  font-family: Comic Mono;
+  font-weight: bold;
+  font-size: 20px;
+  color: $white;
+  background-color: $black;
+  border-radius: 5px;
+  padding: 6px 0 6px 0;
+  margin: 2px 0 2px 0;
+}
+
+// Calendar
+.cal-box {
+  background-color: $black;
+  font-family: Comic Mono;
+  font-size: 1em;
+  font-weight: bold;
+
+  .cal-inner-box {
+      padding: 1rem 1rem .2rem;
+
+      .cal {
+          &.highlight {
+              padding: 10rem;
+          }
+
+          padding: .8rem .25rem 0rem;
+          margin-left: 10px;
+      }
+  }
+}
+
+calendar:selected {
+  color: $blue;
+}
+
+calendar.header {
+color: $blue;
+font-weight: bold;
+}
+
+calendar.button {
+color: $magenta;
+}
+
+calendar.highlight {
+color: $magenta;
+font-weight: bold;
+}
+
+calendar:indeterminate {
+color: $background;
+}
+
+// Powermenu
+.powermenu {
+  font-family: Comic Mono;
+  font-size: 22px;
+  font-weight: bold;
+  margin: 3px 0 3px 0;
+}
+.button-bspres, .button-reb, .button-lock,
+.button-quit, .button-off{
+  padding: 0 0 0 0;
+}
+.button-off{
+  color: $red;
+  margin: 0 0 1px 0;
+  padding-right: 5px;
+}
+.button-bspres{
+  color: $green;
+}
+.button-reb{
+  color: $yellow
+}
+.button-quit{
+  color: $magenta;
+}
+.button-lock{
+  color: $blue;
+}

@@ -37,8 +37,8 @@ makepkg -si
 ### i3wm and xorg
 ```bash
 yay -Syu i3-wm xorg-xinit xorg-server xorg-xrandr xdg-utils # choose noto-fonts
-yay -Syu alacritty
-yay -Syu rofi polybar feh picom dex
+yay -Syu kitty
+yay -Syu rofi feh picom dex
 yay -Syu libnotify dunst
 ```
 
@@ -65,16 +65,21 @@ yay -Syu gnome-keyring libsecret keepass
 
 ### Development
 ```bash
-yay -Syu neovim
+yay -Syu code code-features code-marketplace
 ```
 
-## Theme, Login screen and lock screen
+## Theme, Login screen and lock screen (do it when you completely free)
+
+Choose everforest dark hard
+
 ```bash
 yay -Syu lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 yay -Syu gnome-themes-extra gtk-engine-murrine colloid-everforest-gtk-theme-git lxappearance
 yay -Syu colloid-icon-theme-git
 sudo systemctl enable lightdm.service
 yay -Syu betterlockscreen
+
+kitty +kitten themes
 ```
 
 ### Auto start i3 at login
@@ -92,7 +97,7 @@ yay -Syu noto-fonts-cjk ttf-firacode-nerd rofi-emoji noto-fonts-emoji
 
 ```bash
 ln -s ~/dotfiles-collection/i3 ~/.config/i3
-ln -s ~/dotfiles-collection/polybar ~/.config/polybar
+ln -s ~/dotfiles-collection/eww ~/.config/eww
 ln -s ~/dotfiles-collection/rofi ~/.config/rofi
 ln -s ~/dotfiles-collection/alacritty ~/.config/alacritty
 ln -s ~/dotfiles-collection/picom ~/.config/picom
@@ -102,6 +107,10 @@ ln -s ~/dotfiles-collection/bin ~/.config/bin
 ln -s ~/dotfiles-collection/betterlockscreen ~/.config/betterlockscreen
 ln -s ~/dotfiles-collection/zshrc ~/.zshrc
 ```
+
+## Install eww
+
+Build from source. Choose rustup.
 
 ## Bluetooth
 ```bash

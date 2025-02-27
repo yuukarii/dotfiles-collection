@@ -1,0 +1,13 @@
+#!/bin/sh
+
+symbol() {
+[ $(cat /sys/class/net/w*/operstate) = down ] && echo 󰤭 && exit
+echo 󰤨
+}
+
+name() {
+sudo iwctl station wlan0 show | grep "Connected network" | sed -e 's/^[ ]*//'
+}
+
+[ "$1" = "icon" ] && symbol && exit
+[ "$1" = "name" ] && name && exit

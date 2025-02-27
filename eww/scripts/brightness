@@ -1,0 +1,3 @@
+#/usr/bin/bash
+
+brightnessctl -m -d amdgpu_bl1 | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'
