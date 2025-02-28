@@ -17,13 +17,13 @@
 (deflisten focused-workspace :initial "1" `$HOME/.config/eww/scripts/getfocusedws`)
 
 (defwidget workspaces [active-workspace focused-workspace urgent-workspace]
-	(box
+    (box
     :class "workspaces"
     :orientation "v"
     :space-evenly true
     :halign "start"
     
-		(button
+    (button
     :class {
       arraylength(search(focused-workspace, "1")) > 0 ? "focused-workspace" : 
       arraylength(search(urgent-workspace, "1")) > 0 ? "urgent-workspace" : 
@@ -108,74 +108,73 @@
 
 ;; Battery Widgets ;;
 (defwidget bat []
-	(box	:orientation "v"	
-			:space-evenly "false"
-	(label	:class "bat"		
-			:halign "end"		
-			:text battery	
-			:tooltip "Battery: ${battery-cappacity}%")))
+    (box	:orientation "v"	
+            :space-evenly "false"
+    (label	:class "bat"		
+            :halign "end"		
+            :text battery	
+            :tooltip "Battery: ${battery-cappacity}%")))
 (defpoll battery			:interval "1s"	"scripts/battery icon")
 (defpoll battery-cappacity	:interval "1s"	"scripts/battery percent")
 
 ;; Wifi Widgets ;;
 (defwidget wifi []
-	(box		:orientation "v"  
-				:tooltip wifi-name
-	(button		:onclick "scripts/popup wifi" 
-				:class "wifi-icon" wifi-icon)))
+    (box		:orientation "v"  
+                :tooltip wifi-name
+    (button		:class "wifi-icon" wifi-icon)))
 (defpoll wifi-icon :interval "1s" "scripts/wifi icon")
 (defpoll wifi-name :interval "1s" "scripts/wifi name")
 
 ;; Brightness Widgets ;;
 (defwidget bright []
   (eventbox :onhover "${eww} update bright=true"   
-  			:onhoverlost "${eww} update bright=false"
-  			(box    :orientation "v"  
-			  		:space-evenly "false"  
-					:spacing 2
-  			(revealer :transition "slideup" 
-			  		  :reveal bright   
-					  :duration "550ms"
-  			(scale :class "bribar" 
-			  	   :value current-brightness 
-				   :tooltip "Brightness: ${current-brightness}%" 
-				   :onchange "brightnessctl set {}%" 
-				   :orientation "v" 
-				   :flipped true 
-				   :max 101 
-				   :min 0))
-  			(label :class "brightness-icon" 
-			  	   :text "󰃠"))))
+            :onhoverlost "${eww} update bright=false"
+            (box    :orientation "v"  
+                    :space-evenly "false"  
+                    :spacing 2
+            (revealer :transition "slideup" 
+                      :reveal bright   
+                      :duration "550ms"
+            (scale  :class "bribar" 
+                    :value current-brightness 
+                    :tooltip "Brightness: ${current-brightness}%" 
+                    :onchange "brightnessctl set {}%" 
+                    :orientation "v" 
+                    :flipped true 
+                    :max 101 
+                    :min 0))
+            (label  :class "brightness-icon" 
+                    :text "󰃠"))))
 (defpoll current-brightness :interval "1s" "brightnessctl -m -d amdgpu_bl1 | awk -F, '{print substr($4, 0, length($4)-1)}' | tr -d '%'")
 (defvar bright false)
 
 ;; Volume Widgets ;;
 (defwidget volum []
-	(eventbox :onhover "${eww} update volum=true" 		
-			  :onhoverlost "${eww} update volum=false"
-	(box      :orientation "v" 	  
-			  :space-evenly "false" 
-			  :spacing "2"
-	(revealer :transition "slideup" 
-			  :reveal volum         
-			  :duration "550ms"
-	(scale    :class "volbar" 	  
-			  :value current-volume 
-			  :orientation "v"      
-			  :flipped true 
-			  :tooltip "Volume: ${current-volume}%" 
-			  :max 101 
-			  :min 0 
-			  :onchange "pamixer --set-volume {}" ))
-	(button   :onclick "scripts/popup audio"   :class "volume-icon" "󰕾"))))
+    (eventbox :onhover "${eww} update volum=true" 		
+              :onhoverlost "${eww} update volum=false"
+    (box      :orientation "v" 	  
+              :space-evenly "false" 
+              :spacing "2"
+    (revealer :transition "slideup" 
+              :reveal volum         
+              :duration "550ms"
+    (scale    :class "volbar" 	  
+              :value current-volume 
+              :orientation "v"      
+              :flipped true 
+              :tooltip "Volume: ${current-volume}%" 
+              :max 101 
+              :min 0 
+              :onchange "pamixer --set-volume {}" ))
+    (button   :onclick "scripts/popup audio"   :class "volume-icon" "󰕾"))))
 (defpoll current-volume :interval "1s" "pamixer --get-volume")
 (defvar volum false)
 
 ;; Control Panel Widgets ;;	
 (defwidget control []
-	(box :orientation "v" 
-		 :space-evenly false  
-		 :class "control"
+    (box :orientation "v" 
+         :space-evenly false  
+         :class "control"
 (bat)
 (wifi)
 (bright)
@@ -183,25 +182,25 @@
 
 ;; Clock Widgets ;;
 (defwidget time []
-	(box	:orientation "v" 
-			:class "time" 
-			:valign "end"
-	(button	:onclick "scripts/popup calendar"	
-			:class "time-hour" hour)
-	(button	:onclick "scripts/popup calendar"	
-			:class "time-min"  min)))
+    (box	:orientation "v" 
+            :class "time" 
+            :valign "end"
+    (button	:onclick "scripts/popup calendar"	
+            :class "time-hour" hour)
+    (button	:onclick "scripts/popup calendar"	
+            :class "time-min"  min)))
 (defpoll hour	:interval "1s"	"date '+%H'")
 (defpoll min	:interval "1s"	"date '+%M'")
 
 ;; Calendar Widgets ;;
 (defwidget cal []
-	(box :class "cal-box" 
-		 :orientation "v"
-	(box :class "cal-inner-box"
-	(calendar :class "cal" 
-			  :day calendar_day 
-			  :month calendar_month 
-			  :year calendar_year))))
+    (box :class "cal-box" 
+         :orientation "v"
+    (box :class "cal-inner-box"
+    (calendar :class "cal" 
+              :day calendar_day 
+              :month calendar_month 
+              :year calendar_year))))
 (defpoll calendar_day :interval "10h"
     "date '+%d'")
 (defpoll calendar_month :interval "10h"
@@ -211,76 +210,76 @@
 
 ;; Powermenu Widgets ;;
 (defwidget power []
-	(eventbox	:onhover "${eww} update power=true"	
-				:onhoverlost "${eww} update power=false" 
-	(box		:orientation "v"					
-				:space-evenly "false" 	 
-				:vexpand "false" 	
-				:class "powermenu"
-	(revealer	:transition "slideup"				
-				:reveal power			 
-				:duration "550ms"
-	(box		:orientation "v"					
-				:space-evenly "false"
+    (eventbox	:onhover "${eww} update power=true"	
+                :onhoverlost "${eww} update power=false" 
+    (box		:orientation "v"					
+                :space-evenly "false" 	 
+                :vexpand "false" 	
+                :class "powermenu"
+    (revealer	:transition "slideup"				
+                :reveal power			 
+                :duration "550ms"
+    (box		:orientation "v"					
+                :space-evenly "false"
 
-  	(button		:class "button-reb"					
-	  			:tooltip "Reboot"		 
-				:onclick "reboot"	"")
+    (button		:class "button-reb"					
+                :tooltip "Reboot"		 
+                :onclick "reboot"	"")
 
-	(button		:class "button-quit" 				
-				:tooltip "Logout" 		 
-				:onclick "pkill -KILL -u $USER" "󰍃")
+    (button		:class "button-quit" 				
+                :tooltip "Logout" 		 
+                :onclick "pkill -KILL -u $USER" "󰍃")
 
-	(button		:class "button-lock" 				
-				:tooltip "Lock Screen"	 
-				:onclick "betterlockscreen -l"	"󰌾")))
+    (button		:class "button-lock" 				
+                :tooltip "Lock Screen"	 
+                :onclick "betterlockscreen -l"	"󰌾")))
 
-	(button		:class "button-off"					
-				:tooltip "Shutdown"		 
-				:onclick "shutdown now"	""))))
+    (button		:class "button-off"					
+                :tooltip "Shutdown"		 
+                :onclick "shutdown now"	""))))
 (defvar power false)
 
 ;; Top Widgets ;;
 (defwidget top []
-	(box	:orientation "v" 
-			:space-evenly "false" 
-			:valign "start" 
+    (box	:orientation "v" 
+            :space-evenly "false" 
+            :valign "start" 
 (workspaces 
       :active-workspace active-workspace
       :focused-workspace focused-workspace
       :urgent-workspace urgent-workspace)))
 
 (defwidget tray []
-	(box :class "systray"
-		(systray	:spacing 3
-				:orientation "v"
-				:space-evenly true
-				:icon-size 20
-				:prepend-new false)))
+    (box :class "systray"
+        (systray	:spacing 3
+                :orientation "v"
+                :space-evenly true
+                :icon-size 16
+                :prepend-new false)))
 
 ;; Bottom Widgets ;;
 (defwidget bottom []
-	(box	:orientation "v" 
-			:space-evenly false 
+    (box	:orientation "v" 
+            :space-evenly false 
 (time)
 (power)))
 
 ;; End Widgets ;;
 (defwidget end []
-	(box :orientation "v" 
-		 :space-evenly "false" 
-		 :valign "end" 
-		 :spacing 5
+    (box :orientation "v" 
+         :space-evenly "false" 
+         :valign "end" 
+         :spacing 5
 (control)
 (tray)
 (bottom)))
 
 ;; Bar Widgets ;;
 (defwidget bar []
-	(box :class "eww_bar" 
-		 :orientation "v" 
-		 :vexpand "false" 
-		 :hexpand "false"
+    (box :class "eww_bar" 
+         :orientation "v" 
+         :vexpand "false" 
+         :hexpand "false"
 (top)
 (end)))
 
@@ -289,28 +288,23 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Bar Windows ;;
 (defwindow bar
-	:monitor 0
+    :monitor 0
         :geometry (geometry
                 :x "10px"
                 :y "0px"
-                :width "47px"
+                :width "35px"
                 :height "90%"
                 :anchor "center left")
         :stacking "fg"
         :focusable false
-	:hexpand "false"
-	:vexpand "false"
+    :hexpand "false"
+    :vexpand "false"
 (bar))
 
 ;; Calendar Windows ;;
 (defwindow calendar
-	:geometry (geometry :x "70px" 
-						:y "65%" 
-						:width "270px" 
-						:height "60px")
+    :geometry (geometry :x "60px" 
+                        :y "70%"
+                        :width "270px" 
+                        :height "60px")
 (cal))
-
-
-
-
-

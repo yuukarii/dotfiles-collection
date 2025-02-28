@@ -33,8 +33,8 @@ $white: $foreground;
 .focused-workspace {
   font-family: Comic Mono;
   background-color: $black;
-  padding: 8px 15px 9px 15px;
-  margin: 3px 1px 3px 1px;
+  padding: 8px 10px 6px 8px;
+  margin: 0 0 0 0;
   border-radius: 5px;
   color: $foreground;
   font-weight: bold;
@@ -46,7 +46,6 @@ $white: $foreground;
   font-size: 16px;
   font-weight: bold;
 }
-
 .regular {
   font-family: Comic Mono;
   color: $black4;
@@ -62,31 +61,32 @@ $white: $foreground;
 .control {
   padding: 0px;
   font-family: FiraCode Nerd Font Mono;
-  font-size: 18px;
+  font-size: 10px;
   background-color: $black;
   border-radius: 5px;
 }
 .bat{
   font-size: 20px;
-  padding-right: 14px;
-  padding-top: 10px;
+  padding-right: 7px;
+  padding-top: 8px;
   color: $blue;
 }
 .wifi-icon{
   color: $magenta;
-  font-size: 30px;
-  padding-left: 2px;
+  font-size: 24px;
+  padding-left: 1px;
   padding-top: 8px;
 }
 .brightness-icon{
   color: $yellow;
-  font-size: 30px;
+  font-size: 23px;
+  padding-left: 2px;
 }
 .volume-icon{
   color: $green;
-  font-size: 26px;
+  font-size: 20px;
   padding-left: 2px;
-  padding-bottom: 6px;
+  padding-bottom: 8px;
 }
 
 scale trough {
@@ -94,7 +94,7 @@ scale trough {
   background-color: $background;
   border-radius: 5px;
   min-height: 80px;
-  min-width: 10px;
+  min-width: 6px;
 }
 .bribar trough highlight {
   background-color: $yellow;
@@ -115,12 +115,12 @@ scale trough {
 .time {
   font-family: Comic Mono;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 15px;
   color: $white;
   background-color: $black;
   border-radius: 5px;
-  padding: 6px 0 6px 0;
-  margin: 2px 0 2px 0;
+  padding: 6px 0 2px 0;
+  margin: 0 0 0 0;
 }
 
 // Calendar
@@ -169,18 +169,18 @@ color: $background;
 // Powermenu
 .powermenu {
   font-family: Comic Mono;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
-  margin: 3px 0 3px 0;
+  margin: 2px 0 0 0;
 }
 .button-bspres, .button-reb, .button-lock,
 .button-quit, .button-off{
-  padding: 0 0 0 0;
+  padding: 1px 0 0 1px;
 }
 .button-off{
   color: $red;
-  margin: 0 0 1px 0;
-  padding-right: 5px;
+  margin: 0 0 0 0;
+  padding-right: 3px;
 }
 .button-bspres{
   color: $green;

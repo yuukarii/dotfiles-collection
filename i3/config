@@ -34,7 +34,8 @@ exec --no-startup-id dex --autostart --environment i3
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
 # exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-exec --no-startup-id betterlockscreen -u /usr/share/wallpapers/flowers.pnd
+exec --no-startup-id betterlockscreen -u /usr/share/wallpapers/flowers.png
+exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 180 "betterlockscreen -l dim" ""
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
@@ -68,8 +69,11 @@ exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 # Start ibus
 exec --no-startup-id ibus-daemon -rxRd
 
-# Start nextcloud
-#exec --no-startup-id /usr/bin/nextcloud --background &
+# Start nextcloud, sleep to wait system ready for nextcloud. Use it when autostart doesn't work
+# Turn off the auto launch at boot in app itself, start by i3
+# If Nextcloud doesn't automatically store credentials, check gnome-keyring and libsecret
+exec --no-startup-id dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
+exec --no-startup-id sleep 30 ; /usr/bin/nextcloud --background &
 
 # Use a custom script to check volume with pipewire
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/bin/pipewire-simple.sh --up
@@ -117,8 +121,9 @@ bindsym $mod+d exec --no-startup-id "rofi -modi drun,window -show drun"
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 #for_window [class="^.*"] border pixel 0
 for_window [class="pavucontrol"] floating enable
-for_window [class="KeePass2"] floating enable
+for_window [class="KeePassXC"] floating enable
 for_window [class="Thunar"] floating enable
+for_window [class="Nextcloud"] move position 50 400
 
 # change focus
 # bindsym $mod+h focus left
@@ -220,27 +225,27 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -258,14 +263,14 @@ gaps inner 20px
 
 # Configure an additional 5px of extra space to the screen edges,
 # for a total gap of 10px to the screen edges, and 5px between windows.
-gaps left 57px
+gaps left 38px
 
 # Only enable outer gaps when there is exactly one window or split container on the workspace.
 #smart_gaps inverse_outer
 
 # default window borders
-default_border pixel 2
-default_floating_border 1pixel
+default_border pixel 0
+default_floating_border none
 
 # Hides vertical and horizontal borders when there's only one window.
 hide_edge_borders smart

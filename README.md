@@ -45,7 +45,6 @@ yay -Syu libnotify dunst
 ### File explorer
 ```bash
 yay -Syu thunar nextcloud-client gvfs thunar-archive-plugin xarchiver tumbler
-yay -Syu ranger # Consider to use TUI instead of GUI -> save resources
 ```
 
 ### Install sound
@@ -55,12 +54,12 @@ yay -Syu pamixer pavucontrol ffmpeg pipewire pipewire-alsa pipewire-audio pipewi
 
 ### Hardware driver
 ```bash
-yay -Syu brightnessctl
+yay -Syu brightnessctl amd-ucode polkit
 ```
 
 ### Credentials
 ```bash
-yay -Syu gnome-keyring libsecret keepass
+yay -Syu gnome-keyring libsecret keepassxc
 ```
 
 ### Development
@@ -77,7 +76,7 @@ yay -Syu lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 yay -Syu gnome-themes-extra gtk-engine-murrine colloid-everforest-gtk-theme-git lxappearance
 yay -Syu colloid-icon-theme-git
 sudo systemctl enable lightdm.service
-yay -Syu betterlockscreen
+yay -Syu betterlockscreen xidlehook
 
 kitty +kitten themes
 ```
@@ -105,6 +104,7 @@ ln -s ~/dotfiles-collection/dunst ~/.config/dunst
 ln -s ~/dotfiles-collection/fastfetch ~/.config/fastfetch
 ln -s ~/dotfiles-collection/bin ~/.config/bin
 ln -s ~/dotfiles-collection/betterlockscreen ~/.config/betterlockscreen
+ln -s ~/dotfiles-collection/auto-cpufreq ~/.config/auto-cpufreq
 ln -s ~/dotfiles-collection/zshrc ~/.zshrc
 ```
 
@@ -178,6 +178,8 @@ Remember changing for root user also.
 
 ## Reduce heat of laptop
 
+> 28/02, I faced an issue with auto-cpufreq that unable to change governor from performance to powersave. Install tlp fixed this.
+
 ### Install TLP
 
 Follow this instruction: [TLP main page](https://linrunner.de/tlp/index.html).
@@ -191,7 +193,7 @@ systemctl enable powertop.service
 systemctl start powertop.service
 ```
 
-### Install `cpupower` (use auto-cpufreq instead)
+### Install `cpupower`
 
 ```bash
 yay -Syu cpupower

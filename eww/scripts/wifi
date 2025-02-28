@@ -6,7 +6,7 @@ echo 󰤨
 }
 
 name() {
-sudo iwctl station wlan0 show | grep "Connected network" | sed -e 's/^[ ]*//'
+sudo iwctl station wlan0 show | grep "Connected network" | sed -e 's/^[ ]*//' -e 's/[ ]*$//'
 }
 
 [ "$1" = "icon" ] && symbol && exit
