@@ -79,6 +79,7 @@ sudo systemctl enable lightdm.service
 yay -Syu betterlockscreen xidlehook
 
 kitty +kitten themes
+kitty list-fonts
 ```
 
 ### Auto start i3 at login
@@ -106,6 +107,7 @@ ln -s ~/dotfiles-collection/bin ~/.config/bin
 ln -s ~/dotfiles-collection/betterlockscreen ~/.config/betterlockscreen
 ln -s ~/dotfiles-collection/auto-cpufreq ~/.config/auto-cpufreq
 ln -s ~/dotfiles-collection/zshrc ~/.zshrc
+ln -s ~/dotfiles-collection/kitty ~/.config/kitty
 ```
 
 ## Install eww
