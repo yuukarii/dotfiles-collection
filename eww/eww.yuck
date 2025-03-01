@@ -295,7 +295,7 @@
                 :width "35px"
                 :height "90%"
                 :anchor "center left")
-        :stacking "fg"
+        :stacking "bg"
         :focusable false
     :hexpand "false"
     :vexpand "false"
