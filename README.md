@@ -163,7 +163,7 @@ yay -Syu maim xclip dunst xdotool slop imagemagick
 ## Virtualization
 
 ```bash
-yay -Syu libvirt virt-manager qemu-desktop edk2-ovmf virt-viewer
+yay -Syu libvirt virt-manager qemu-desktop edk2-ovmf virt-viewer dnsmasq
 sudo systemctl enable libvirtd
 sudo systemctl start libvirtd
 usermod -aG libvirt <username>
@@ -180,7 +180,7 @@ Remember changing for root user also.
 
 ## Reduce heat of laptop
 
-> 28/02, I faced an issue with auto-cpufreq that unable to change governor from performance to powersave. Install tlp fixed this.
+> 28/02/2025, I faced an issue with auto-cpufreq that unable to change governor from performance to powersave. Install tlp fixed this.
 
 ### Install TLP
 

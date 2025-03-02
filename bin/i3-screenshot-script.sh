@@ -62,7 +62,7 @@ if [ -f "$FILENAME" ]; then
   xclip -selection clipboard -t image/png "$FILENAME"
 
   # Send notification with thumbnail
-  dunstify -i "$THUMBNAIL" \
+  notify-send -i "$THUMBNAIL" \
     "Screenshot taken" \
     "Saved as $(
       basename "$FILENAME"
