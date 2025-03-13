@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 LOCKFILE="/tmp/auto-toggle-eww-bar.lock"
+INTERVAL=5
 
 if [ -e "$LOCKFILE" ]; then
   echo "Script is already running"
@@ -15,7 +16,7 @@ trap 'rm -f "$LOCKFILE"' EXIT
 
 # Listen for window state changes
 while true; do
-    sleep 5
+    sleep $INTERVAL
     # i3-msg -t subscribe '[ "window" ]' | while read -r _; do
     # Check if any window is fullscreen
     fullscreen=$(i3-msg -t get_tree | jq '.. | objects | select(.type? == "con" and .fullscreen_mode? == 1)')

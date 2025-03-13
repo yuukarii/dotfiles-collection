@@ -29,17 +29,17 @@ mkdir -p "$wallpaper_dir"
 file_extension="${image_file##*.}"
 
 # Copy the image to /usr/share/wallpapers with new name
-cp "$image_file" "$wallpaper_dir/current-lockscreen.$file_extension"
+cp "$image_file" "$wallpaper_dir/current-loginscreen.$file_extension"
 
 # Update lightdm-gtk-greeter
 lightdm_gtk_conf="/etc/lightdm/lightdm-gtk-greeter.conf"
 
 if [ -f "$lightdm_gtk_conf" ]; then
   # Use sed to replace the line containing "feh"
-  sed -i '/background/c\background = /usr/share/wallpapers/current-lockscreen.'"$file_extension" "$lightdm_gtk_conf"
+  sed -i '/background/c\background = /usr/share/wallpapers/current-loginscreen.'"$file_extension" "$lightdm_gtk_conf"
   echo "Updated lightdm gtk config successfully"
 else
   echo "lightdm gtk greeter file not found: $lightdm_gtk_conf"
 fi
 
-echo "Lockscreen set successfully"
+echo "Log in screen set successfully"

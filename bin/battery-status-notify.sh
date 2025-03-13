@@ -1,6 +1,7 @@
 #!/usr/bin/bash
 
 LOCKFILE="/tmp/battery-status-notify.lock"
+INTERVAL=5
 
 if [ -e "$LOCKFILE" ]; then
   echo "Script is already running"
@@ -16,7 +17,7 @@ trap 'rm -f "$LOCKFILE"' EXIT
 STATUS=$(cat /sys/class/power_supply/BAT0/status)
 
 while true; do
-  sleep 5
+  sleep $INTERVAL
   LAST_STATUS=$STATUS
   STATUS=$(cat /sys/class/power_supply/BAT0/status)
   if [[ "$LAST_STATUS" != "$STATUS" ]]; then

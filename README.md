@@ -176,7 +176,7 @@ chsh -l
 chsh -s /full/path/to/shell
 ```
 
-Remember changing for root user also.
+Remember changing for `root` user also.
 
 ## Reduce heat of laptop
 
@@ -259,6 +259,25 @@ CheckSpace
 #VerbosePkgLists
 ParallelDownloads = 5
 ILoveCandy
+```
+
+### Reflector
+
+Create configurations file:
+```
+/etc/xdg/reflector/reflector.conf
+---------------------------------
+--save /etc/pacman.d/mirrorlist
+--country Vietnam,Singapore
+--protocol https
+--latest 5
+--sort rate
+```
+
+Start reflector service:
+```bash
+sudo systemctl enable reflector.service
+sudo systemctl start reflector.service
 ```
 
 ### feh tips
