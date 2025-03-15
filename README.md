@@ -286,3 +286,13 @@ Set this command to open with option of images:
 ```bash
 feh --scale-down --auto-zoom --start-at 
 ```
+
+### GRUB_CONFIG
+
+For AMD laptop (HP Elitebook 845 G9)
+
+```
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet splash nowatchdog mitigations=off nospectre_v2 nopti l1tf=off no_stf_barrier spec_store_bypass_disable=off randomize_kstack_offset=off slab_nomerge init_on_free=0 init_on_alloc=0 audit=0 selinux=0 apparmor=0 security=none page_alloc.shuffle=0 iommu=pt nohz_full=0-$(nproc) rcu_nocbs=0-$(nproc) amd_pstate=active"
+
+GRUB_DISABLE_SUBMENU=y
+```
