@@ -296,3 +296,7 @@ GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet splash nowatchdog mitigations=off n
 
 GRUB_DISABLE_SUBMENU=y
 ```
+
+### Public open Wifi
+
+Connect to `neverssl.com` to activate the connection.
