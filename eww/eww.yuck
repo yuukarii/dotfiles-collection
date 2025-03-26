@@ -271,7 +271,6 @@
          :valign "end" 
          :spacing 5
 (control)
-(tray)
 (bottom)))
 
 ;; Bar Widgets ;;

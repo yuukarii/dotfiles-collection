@@ -55,6 +55,8 @@ yay -Syu pamixer pavucontrol ffmpeg pipewire pipewire-alsa pipewire-audio pipewi
 ### Hardware driver
 ```bash
 yay -Syu brightnessctl amd-ucode polkit
+
+yay -Syu mesa libva-mesa-driver libvdpau-va-gl vdpauinfo
 ```
 
 ### Credentials
@@ -270,14 +272,8 @@ Create configurations file:
 --save /etc/pacman.d/mirrorlist
 --country Vietnam,Singapore
 --protocol https
---latest 5
+--latest 20
 --sort rate
-```
-
-Start reflector service:
-```bash
-sudo systemctl enable reflector.service
-sudo systemctl start reflector.service
 ```
 
 ### feh tips
@@ -300,3 +296,9 @@ GRUB_DISABLE_SUBMENU=y
 ### Public open Wifi
 
 Connect to `neverssl.com` to activate the connection.
+
+
+### Firefox
+
+media.ffmpeg.vaapi.enabled	true
+media.hardware-video-decoding.enabled	true
