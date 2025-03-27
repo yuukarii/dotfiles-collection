@@ -266,14 +266,8 @@ ILoveCandy
 ### Reflector
 
 Create configurations file:
-```
-/etc/xdg/reflector/reflector.conf
----------------------------------
---save /etc/pacman.d/mirrorlist
---country Vietnam,Singapore
---protocol https
---latest 20
---sort rate
+```bash
+reflector.conf --save /etc/pacman.d/mirrorlist --country Vietnam,Singapore --protocol https --latest 20 --sort rate
 ```
 
 ### feh tips
@@ -299,6 +293,8 @@ Connect to `neverssl.com` to activate the connection.
 
 
 ### Firefox
-
+Enter `about:config` on the address bar and modify these parameters:
+```
 media.ffmpeg.vaapi.enabled	true
 media.hardware-video-decoding.enabled	true
+```
