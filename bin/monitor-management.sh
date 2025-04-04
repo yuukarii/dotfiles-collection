@@ -1,6 +1,6 @@
 #!/bin/bash
 monitor_info=$(xrandr | grep connected | grep -v disconnected)
-echo "$monitor_info"
+# echo "$monitor_info"
 
 if echo "$monitor_info" | grep -q "HDMI-1"; then
   echo "HDMI-1 found. Switch to HDMI-1"
