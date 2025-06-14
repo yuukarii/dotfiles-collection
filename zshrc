@@ -95,4 +95,4 @@ alias toggle_vpn='sudo $HOME/dotfiles-collection/bin/toggle_openvpn.sh'
 
 eval "$(starship init zsh)"
 echo
-pfetch
+fastfetch
