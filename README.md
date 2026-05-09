@@ -44,7 +44,7 @@ yay -Syu libnotify dunst
 
 ### File explorer
 ```bash
-yay -Syu thunar nextcloud-client gvfs thunar-archive-plugin xarchiver tumbler
+yay -Syu thunar nextcloud-client gvfs thunar-archive-plugin xarchiver tumbler rsync
 ```
 
 ### Install sound
@@ -78,10 +78,17 @@ yay -Syu lightdm lightdm-gtk-greeter lightdm-gtk-greeter-settings
 yay -Syu gnome-themes-extra gtk-engine-murrine colloid-everforest-gtk-theme-git lxappearance
 yay -Syu colloid-icon-theme-git
 sudo systemctl enable lightdm.service
-yay -Syu betterlockscreen xidlehook
+yay -Syu betterlockscreen
+yay -Syu bibata-cursor-theme
 
 kitty +kitten themes
 kitty list-fonts
+```
+
+Use lxappearance to change the theme and cursor.
+```bash
+sudo rm -rf /usr/share/icons/default
+sudo ln -s /usr/share/icons/Bibata-Modern-Ice /usr/share/icons/default
 ```
 
 ### Auto start i3 at login
@@ -89,6 +96,8 @@ Add below line to `~/.xinitrc`:
 ```bash
 exec /usr/bin/i3
 ```
+
+Testing with `startx` from tty session.
 
 ### Install fonts
 ```bash
@@ -114,11 +123,23 @@ ln -s ~/dotfiles-collection/kitty ~/.config/kitty
 
 ## Install eww
 
+```bash
+yay -Syu libdbusmenu-gtk3 jq
+```
+
 Build from source. Choose rustup.
+
+## Configure zram
+```bash
+yay -Syu zram-generator
+sudo vim /etc/systemd/zram-generator.conf
+[zram0]
+zram-size = min(ram / 2, 16384)
+```
 
 ## Bluetooth
 ```bash
-yay -Syu bluez bluez-utils bluez-obex
+yay -Syu bluez bluez-utils bluez-obex bluetui
 sudo systemctl enable bluetooth.service
 sudo systemctl start bluetooth.service
 ```
@@ -169,6 +190,10 @@ yay -Syu libvirt virt-manager qemu-desktop edk2-ovmf virt-viewer dnsmasq
 sudo systemctl enable libvirtd
 sudo systemctl start libvirtd
 usermod -aG libvirt <username>
+
+yay -Syu docker docker-compose
+sudo groupadd docker
+sudo usermod -aG docker $USER
 ```
 
 ## Change shell to Zsh
@@ -176,9 +201,8 @@ To list all installed shells, run:
 ```bash
 chsh -l
 chsh -s /full/path/to/shell
+sudo chsh -s /full/path/to/shell
 ```
-
-Remember changing for `root` user also.
 
 ## Reduce heat of laptop
 
@@ -218,8 +242,15 @@ The system reduces significantly from 48 degree Celcius to 38 degree Celcius aft
 This issue is due to USB suspend mode.
 Use `powertop-autotune.sh` to fix this.
 
-### Use ibus-bamboo
-Set the combination to change typing method is `Ctrl+Space`
+### Use fcitx5
+```bash
+yay -Syu fcitx5 fcitx5-configtool fcitx5-unikey fcitx5-qt fcitx5-gtk
+
+vim ~/.xinitrc
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+```
 
 ### Tailscale DNS fight
 
@@ -281,10 +312,26 @@ feh --scale-down --auto-zoom --start-at
 
 For AMD laptop (HP Elitebook 845 G9)
 
-```
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet splash nowatchdog mitigations=off nospectre_v2 nopti l1tf=off no_stf_barrier spec_store_bypass_disable=off randomize_kstack_offset=off slab_nomerge init_on_free=0 init_on_alloc=0 audit=0 selinux=0 apparmor=0 security=none page_alloc.shuffle=0 iommu=pt nohz_full=0-$(nproc) rcu_nocbs=0-$(nproc) amd_pstate=active"
-
+```bash
+GRUB_DEFAULT=saved
+GRUB_TIMEOUT=5
+GRUB_DISTRIBUTOR="Arch"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"
+GRUB_CMDLINE_LINUX=""
+GRUB_PRELOAD_MODULES="part_gpt part_msdos"
+GRUB_TIMEOUT_STYLE=menu
+GRUB_TERMINAL_INPUT=console
+GRUB_GFXMODE=auto
+GRUB_GFXPAYLOAD_LINUX=keep
+GRUB_DISABLE_RECOVERY=true
+GRUB_SAVEDEFAULT=true
 GRUB_DISABLE_SUBMENU=y
+GRUB_DISABLE_OS_PROBER=false
+```
+
+Generate config:
+```bash
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
 ### Public open Wifi
@@ -297,4 +344,19 @@ Enter `about:config` on the address bar and modify these parameters:
 ```
 media.ffmpeg.vaapi.enabled	true
 media.hardware-video-decoding.enabled	true
+```
+
+### Syncthing
+
+```bash
+yay -Syu syncthing
+```
+
+http://docs.syncthing.net/users/autostart.html#how-to-set-up-a-user-service
+
+### Install Linux-lts kernel
+
+```bash
+yay -Syu linux-lts linux-lts-headers
+sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```

@@ -36,7 +36,7 @@ lightdm_gtk_conf="/etc/lightdm/lightdm-gtk-greeter.conf"
 
 if [ -f "$lightdm_gtk_conf" ]; then
   # Use sed to replace the line containing "feh"
-  sed -i '/background/c\background = /usr/share/wallpapers/current-loginscreen.'"$file_extension" "$lightdm_gtk_conf"
+  sed -i '/^background/c\background = /usr/share/wallpapers/current-loginscreen.'"$file_extension" "$lightdm_gtk_conf"
   echo "Updated lightdm gtk config successfully"
 else
   echo "lightdm gtk greeter file not found: $lightdm_gtk_conf"

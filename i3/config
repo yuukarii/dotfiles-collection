@@ -28,18 +28,7 @@ font pango:monospace 8
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
-# The combination of xss-lock, nm-applet and pactl is a popular choice, so
-# they are included here as an example. Modify as you see fit.
-
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 exec --no-startup-id betterlockscreen -u /usr/share/wallpapers/flowers.png
-#exec --no-startup-id xidlehook --not-when-audio --not-when-fullscreen --timer 180 "betterlockscreen -l dim" ""
-
-# NetworkManager is the most popular way to manage wireless networks on Linux,
-# and nm-applet is a desktop environment-independent system tray GUI for it.
-#exec --no-startup-id nm-applet
 
 # Start xrandr
 exec_always --no-startup-id $HOME/.config/bin/monitor-management.sh
@@ -52,7 +41,7 @@ bindsym $mod+Shift+m exec --no-startup-id sudo $HOME/.config/bin/refresh-hardwar
 exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 
 # Set up wallpaper
-exec_always --no-startup-id feh --bg-fill /usr/share/wallpapers/current-background.png
+exec_always --no-startup-id feh --bg-fill /usr/share/wallpapers/current-background.jpg
 
 # Start eww bar
 exec_always --no-startup-id $HOME/.config/eww/scripts/launch.sh
@@ -64,19 +53,18 @@ exec_always --no-startup-id $HOME/.config/bin/battery-low-alert.sh
 exec_always --no-startup-id $HOME/.config/bin/battery-status-notify.sh
 
 # Start rest alert
-#exec_always --no-startup-id $HOME/.config/bin/rest-reminder.sh
+exec_always --no-startup-id $HOME/.config/bin/rest-reminder.sh
 
 # Start dunst
 exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 
-# Start ibus
-exec --no-startup-id ibus-daemon -rxRd
+# Start input method
+#exec --no-startup-id ibus-daemon -rxRd
+exec --no-startup-id /usr/bin/fcitx5 -d
 
-# Start nextcloud, sleep to wait system ready for nextcloud. Use it when autostart doesn't work
-# Turn off the auto launch at boot in app itself, start by i3
-# If Nextcloud doesn't automatically store credentials, check gnome-keyring and libsecret
-exec --no-startup-id dbus-update-activation-environment DISPLAY XAUTHORITY WAYLAND_DISPLAY
-exec --no-startup-id sleep 30 ; /usr/bin/nextcloud --background &
+# Start 9router
+exec --no-startup-id /usr/bin/9router &
+
 
 # Use a custom script to check volume with pipewire
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/bin/pipewire-simple.sh --up
@@ -112,21 +100,14 @@ bindsym $mod+q kill
 bindsym $mod+Shift+p exec ~/.config/bin/power-menu.sh
 bindsym $mod+Shift+f exec poweroff
 
-# start dmenu (a program launcher)
-#bindsym $mod+d exec --no-startup-id dmenu_run
+# start program launcher
 bindsym $mod+d exec --no-startup-id "rofi -modi drun,window -show drun"
-# A more modern dmenu replacement is rofi:
-# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
-# There also is i3-dmenu-desktop which only displays applications shipping a
-# .desktop file. It is a wrapper around dmenu, so you need that installed.
-# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 #for_window [class="^.*"] border pixel 0
 for_window [class="pavucontrol"] floating enable
 for_window [class="KeePassXC"] floating enable
 for_window [class="Thunar"] floating enable
-for_window [class="Nextcloud"] move position 50 500
 
 # change focus
 # bindsym $mod+h focus left
@@ -189,7 +170,6 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws10 "10"
 
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
@@ -201,7 +181,6 @@ bindsym $mod+6 workspace number $ws6
 bindsym $mod+7 workspace number $ws7
 bindsym $mod+8 workspace number $ws8
 bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace number $ws1
@@ -213,7 +192,6 @@ bindsym $mod+Shift+6 move container to workspace number $ws6
 bindsym $mod+Shift+7 move container to workspace number $ws7
 bindsym $mod+Shift+8 move container to workspace number $ws8
 bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
 
 bindsym $mod+x move container to output primary
 

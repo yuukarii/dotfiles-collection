@@ -18,7 +18,7 @@ trap 'rm -f "$LOCKFILE"' EXIT
 STATUS_FILE="/tmp/hdmi1_status"
 
 # Script to run when HDMI status changes
-ACTION_SCRIPT="$HOME/.config/bin/bin/monitor-management.sh"
+ACTION_SCRIPT="$HOME/.config/bin/monitor-management.sh"
 
 # Listen for window state changes
 while true; do
