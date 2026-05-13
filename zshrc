@@ -101,3 +101,11 @@ fastfetch
 
 # Hermes Agent — ensure ~/.local/bin is on PATH
 export PATH="$HOME/.local/bin:$PATH"
+
+export ANTHROPIC_BASE_URL="http://localhost:20128"
+export ANTHROPIC_AUTH_TOKEN="sk-fbed95d29ce3846b-mhfh24-d86ce3ba"
+export ANTHROPIC_API_KEY=""
+export ANTHROPIC_MODEL="main-combo"
+export ANTHROPIC_SMALL_FAST_MODEL="sub-combo"
+export CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1
+export API_TIMEOUT_MS=600000

@@ -13,10 +13,10 @@ touch "$LOCKFILE"
 # Ensure the lock file is removed when the script exists
 trap 'rm -f "$LOCKFILE"' EXIT
 
-INTERVAL_TIME=20 # In minutes
+INTERVAL_TIME=30 # In minutes
 
 while true; do
   INTERVAL_TIME_SECONDS=$((INTERVAL_TIME*60))
   sleep $INTERVAL_TIME_SECONDS
-  dunstify -t 20000 "Please take a look around for 20 seconds" -u critical
+  dunstify -t 300000 "Take a rest. You have sit in front of laptop too long" -u critical
 done
