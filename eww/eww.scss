@@ -174,7 +174,7 @@ color: $background;
   margin: 2px 0 0 0;
 }
 .button-bspres, .button-reb, .button-lock,
-.button-quit, .button-off{
+.button-quit, .button-off, .button-suspend{
   padding: 1px 0 0 1px;
 }
 .button-off{
@@ -192,5 +192,8 @@ color: $background;
   color: $magenta;
 }
 .button-lock{
-  color: $blue;
+  color: $red;
+}
+.button-suspend{
+  color: $cyan;
 }

@@ -44,9 +44,12 @@ exec --no-startup-id picom --config ~/.config/picom/picom.conf -b
 exec_always --no-startup-id feh --bg-fill /usr/share/wallpapers/current-background.jpg
 
 # Start eww bar
-exec_always --no-startup-id $HOME/.config/eww/scripts/launch.sh
+# exec_always --no-startup-id $HOME/.config/eww/scripts/launch.sh
 # Workaround: Automatically close eww bar when fullscreen in i3, since eww bar is not in dock type
-exec_always --no-startup-id $HOME/.config/bin/auto-toggle-eww.sh
+# exec_always --no-startup-id $HOME/.config/bin/auto-toggle-eww.sh
+
+# Start polybar
+exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # Start battery status script
 exec_always --no-startup-id $HOME/.config/bin/battery-low-alert.sh
@@ -61,10 +64,6 @@ exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 # Start input method
 #exec --no-startup-id ibus-daemon -rxRd
 exec --no-startup-id /usr/bin/fcitx5 -d
-
-# Start 9router
-exec --no-startup-id /usr/bin/9router &
-
 
 # Use a custom script to check volume with pipewire
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/bin/pipewire-simple.sh --up
@@ -93,6 +92,10 @@ tiling_drag modifier titlebar
 
 # start a terminal
 bindsym $mod+Return exec kitty
+
+# start brave and obsidian
+bindsym $mod+b exec brave
+bindsym $mod+o exec obsidian
 
 # kill focused window
 bindsym $mod+q kill
@@ -243,10 +246,10 @@ client.background        $bg
 gaps inner 20px
 
 # Configure an additional 38px of extra space to the left of screen edges
-gaps left 38px
+#gaps left 38px
 
 # Only enable outer gaps when there is exactly one window or split container on the workspace.
-#smart_gaps inverse_outer
+smart_gaps inverse_outer
 
 # default window borders
 default_border pixel 0

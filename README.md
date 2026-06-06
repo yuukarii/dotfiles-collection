@@ -11,7 +11,7 @@
 - Format the partitions.
 - Mount the file systems.
 - Select the mirrors.
-    - Create configurations file:
+- Create configurations file:
 
 ```bash
 reflector --save /etc/pacman.d/mirrorlist --country Vietnam,Singapore --protocol https --latest 20 --sort rate
@@ -32,7 +32,7 @@ reflector --save /etc/pacman.d/mirrorlist --country Vietnam,Singapore --protocol
 GRUB_DEFAULT=saved
 GRUB_TIMEOUT=5
 GRUB_DISTRIBUTOR="Arch"
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3"
 GRUB_CMDLINE_LINUX=""
 GRUB_PRELOAD_MODULES="part_gpt part_msdos"
 GRUB_TIMEOUT_STYLE=menu
@@ -47,8 +47,8 @@ GRUB_DISABLE_OS_PROBER=false
 sudo grub-mkconfig -o /boot/grub/grub.cfg
 ```
 
-    - Install `sudo`.
-    - Create my user, change password add it to sudoers file.
+- Install `sudo`.
+- Create my user, change password add it to sudoers file.
 
 ## Install i3wm and important packages
 
@@ -102,13 +102,18 @@ sudo rm -rf /usr/share/icons/default
 sudo ln -s /usr/share/icons/Bibata-Modern-Ice /usr/share/icons/default
 ```
 
-### Install eww
+### Install eww (deprecated)
 
 ```bash
 yay -Syu libdbusmenu-gtk3 jq
 ```
 
 Build from source. Choose rustup.
+
+### Install polybar
+```bash
+yay -Syu polybar
+```
 
 ### Configure zram
 ```bash
@@ -147,7 +152,7 @@ sudo chsh -s /full/path/to/shell
 
 ```bash
 ln -s ~/dotfiles-collection/i3 ~/.config/i3
-ln -s ~/dotfiles-collection/eww ~/.config/eww
+# ln -s ~/dotfiles-collection/eww ~/.config/eww
 ln -s ~/dotfiles-collection/rofi ~/.config/rofi
 # ln -s ~/dotfiles-collection/alacritty ~/.config/alacritty
 ln -s ~/dotfiles-collection/picom ~/.config/picom
@@ -157,6 +162,7 @@ ln -s ~/dotfiles-collection/bin ~/.config/bin
 ln -s ~/dotfiles-collection/betterlockscreen ~/.config/betterlockscreen
 ln -s ~/dotfiles-collection/zshrc ~/.zshrc
 ln -s ~/dotfiles-collection/kitty ~/.config/kitty
+ln -s ~/dotfiles-collection/polybar ~/.config/polybar
 ```
 
 ### Auto start i3 at login
@@ -184,11 +190,7 @@ ILoveCandy
 
 - Touchpad: 90-touchpad.conf
 - Powertop service
-- logind.conf
-- Configure CapsLock to Ctrl: add to .xprofile
-```bash
-setxkbmap -option ctrl:nocaps
-```
+- Configure CapsLock to Ctrl: copy 00-keyboard.conf to /etc/X11/xorg.conf.d/
 
 ## After reboot and have i3wm
 
@@ -199,7 +201,7 @@ yay -Syu maim xclip dunst xdotool slop imagemagick
 
 ### File explorer
 ```bash
-yay -Syu thunar nextcloud-client gvfs thunar-archive-plugin xarchiver tumbler rsync
+yay -Syu thunar nextcloud-client gvfs thunar-archive-plugin xarchiver tumbler rsync zip unzip
 ```
 
 ### Install sound
@@ -338,7 +340,7 @@ Xft.dpi: 96
 
 Set this command to open with option of images:
 ```bash
-feh --scale-down --auto-zoom --start-at 
+feh --scale-down --auto-zoom --start-at
 ```
 
 ### Public open Wifi
