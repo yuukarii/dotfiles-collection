@@ -1,0 +1,16 @@
+@import "everforest"
+
+configuration {
+    lines: 40;
+    sidebar-mode: false;
+}
+
+* {
+    width: 90%;
+    font: "mono 14";
+}
+
+listview {
+    columns: 1;
+    lines: 40;
+}

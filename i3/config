@@ -28,6 +28,9 @@ font pango:monospace 8
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
 
+# Disable X11 screen blanking and DPMS so the display stays on.
+exec --no-startup-id xset s off -dpms
+
 exec --no-startup-id betterlockscreen -u /usr/share/wallpapers/current-loginscreen.jpg
 
 # Start xrandr
@@ -35,6 +38,7 @@ exec_always --no-startup-id $HOME/.config/bin/monitor-management.sh
 
 # Refresh hardware. Remember to add this line to /etc/sudoers
 # <your_username> ALL= NOPASSWD: /home/<your_username>/dotfiles-collection/bin/refresh-hardware.sh
+# refresh hardware (gpu/display)
 bindsym $mod+Shift+m exec --no-startup-id sudo $HOME/.config/bin/refresh-hardware.sh > /tmp/refresh-hardware.log
 
 # Start picom
@@ -66,22 +70,35 @@ exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc
 exec --no-startup-id /usr/bin/fcitx5 -d
 
 # Use a custom script to check volume with pipewire
+# volume up
 bindsym XF86AudioRaiseVolume exec --no-startup-id ~/.config/bin/pipewire-simple.sh --up
+# volume down
 bindsym XF86AudioLowerVolume exec --no-startup-id ~/.config/bin/pipewire-simple.sh --down
+# toggle speaker mute
 bindsym XF86AudioMute exec --no-startup-id ~/.config/bin/pipewire-simple.sh --mute
+# toggle microphone mute
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Change brightness of laptop screen
+# brightness up
 bindsym XF86MonBrightnessUp exec --no-startup-id ~/.config/bin/brightness-control.sh --up
+# brightness down
 bindsym XF86MonBrightnessDown exec --no-startup-id ~/.config/bin/brightness-control.sh --down
 
 # Screenshot bindings
+# screenshot fullscreen
 bindsym Print exec --no-startup-id ~/.config/bin/i3-screenshot-script.sh --full
+# screenshot region (select area)
 bindsym Shift+Print exec --no-startup-id ~/.config/bin/i3-screenshot-script.sh --select
+# screenshot active window
 bindsym Control+Print exec --no-startup-id ~/.config/bin/i3-screenshot-script.sh --active
 
 # Emoji picker
+# emoji picker (rofi)
 bindsym $mod+comma exec --no-startup-id rofi -modi emoji -show emoji
+
+# Show i3 keybinds cheatsheet (Super+F1)
+bindsym $mod+F1 exec --no-startup-id ~/.config/bin/i3-keybinds-show.sh
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -91,19 +108,25 @@ floating_modifier $mod
 tiling_drag modifier titlebar
 
 # start a terminal
+# open terminal (kitty)
 bindsym $mod+Return exec kitty
 
 # start brave and obsidian
+# open brave browser
 bindsym $mod+b exec brave
+# open obsidian
 bindsym $mod+o exec obsidian
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+q kill window
 
+# power menu (logout/reboot/shutdown)
 bindsym $mod+Shift+p exec ~/.config/bin/power-menu.sh
+# poweroff
 bindsym $mod+Shift+f exec poweroff
 
 # start program launcher
+# app launcher (rofi drun)
 bindsym $mod+d exec --no-startup-id "rofi -modi drun,window -show drun"
 
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
@@ -119,44 +142,65 @@ for_window [class="Thunar"] floating enable
 # bindsym $mod+l focus right
 
 # alternatively, you can use the cursor keys:
+# focus left
 bindsym $mod+Left focus left
+# focus down
 bindsym $mod+Down focus down
+# focus up
 bindsym $mod+Up focus up
+# focus right
 bindsym $mod+Right focus right
 
 # move focused window
+# move window left
 bindsym $mod+Shift+h move left
+# move window down
 bindsym $mod+Shift+j move down
+# move window up
 bindsym $mod+Shift+k move up
+# move window right
 bindsym $mod+Shift+l move right
 
 # alternatively, you can use the cursor keys:
+# move window left (arrow)
 bindsym $mod+Shift+Left move left
+# move window down (arrow)
 bindsym $mod+Shift+Down move down
+# move window up (arrow)
 bindsym $mod+Shift+Up move up
+# move window right (arrow)
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
+# split horizontal
 bindsym $mod+h split h
 
 # split in vertical orientation
+# split vertical
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
+# toggle fullscreen
 bindsym $mod+f fullscreen toggle
 
 # change container layout (stacked, tabbed, toggle split)
+# stacking layout
 bindsym $mod+s layout stacking
+# tabbed layout
 bindsym $mod+w layout tabbed
+# toggle split layout
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
+# toggle floating
 bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
+# toggle focus tiling/floating
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
+# focus parent container
 bindsym $mod+a focus parent
 
 # focus the child container
@@ -175,36 +219,58 @@ set $ws8 "8"
 set $ws9 "9"
 
 # switch to workspace
+# switch to workspace 1
 bindsym $mod+1 workspace number $ws1
+# switch to workspace 2
 bindsym $mod+2 workspace number $ws2
+# switch to workspace 3
 bindsym $mod+3 workspace number $ws3
+# switch to workspace 4
 bindsym $mod+4 workspace number $ws4
+# switch to workspace 5
 bindsym $mod+5 workspace number $ws5
+# switch to workspace 6
 bindsym $mod+6 workspace number $ws6
+# switch to workspace 7
 bindsym $mod+7 workspace number $ws7
+# switch to workspace 8
 bindsym $mod+8 workspace number $ws8
+# switch to workspace 9
 bindsym $mod+9 workspace number $ws9
 
 # move focused container to workspace
+# move container to workspace 1
 bindsym $mod+Shift+1 move container to workspace number $ws1
+# move container to workspace 2
 bindsym $mod+Shift+2 move container to workspace number $ws2
+# move container to workspace 3
 bindsym $mod+Shift+3 move container to workspace number $ws3
+# move container to workspace 4
 bindsym $mod+Shift+4 move container to workspace number $ws4
+# move container to workspace 5
 bindsym $mod+Shift+5 move container to workspace number $ws5
+# move container to workspace 6
 bindsym $mod+Shift+6 move container to workspace number $ws6
+# move container to workspace 7
 bindsym $mod+Shift+7 move container to workspace number $ws7
+# move container to workspace 8
 bindsym $mod+Shift+8 move container to workspace number $ws8
+# move container to workspace 9
 bindsym $mod+Shift+9 move container to workspace number $ws9
 
+# move container to primary output
 bindsym $mod+x move container to output primary
 
 assign [class="Virt-viewer"] workspace number $ws5
 
 # reload the configuration file
+# reload i3 config
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# restart i3
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
+# exit i3 (log out)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
 
 # resize window (you can also use the mouse for that)
@@ -215,23 +281,35 @@ mode "resize" {
     # Pressing right will grow the window’s width.
     # Pressing up will shrink the window’s height.
     # Pressing down will grow the window’s height.
+    # resize: shrink width
     bindsym j resize shrink width 10 px or 10 ppt
+    # resize: grow height
     bindsym k resize grow height 10 px or 10 ppt
+    # resize: shrink height
     bindsym l resize shrink height 10 px or 10 ppt
+    # resize: grow width
     bindsym semicolon resize grow width 10 px or 10 ppt
 
     # same bindings, but for the arrow keys
+    # resize: shrink width (arrow)
     bindsym Left resize shrink width 10 px or 10 ppt
+    # resize: grow height (arrow)
     bindsym Down resize grow height 10 px or 10 ppt
+    # resize: shrink height (arrow)
     bindsym Up resize shrink height 10 px or 10 ppt
+    # resize: grow width (arrow)
     bindsym Right resize grow width 10 px or 10 ppt
 
     # back to normal: Enter or Escape or $mod+r
+    # resize: confirm
     bindsym Return mode "default"
+    # resize: cancel
     bindsym Escape mode "default"
+    # resize: confirm (mod+r)
     bindsym $mod+r mode "default"
 }
 
+# enter resize mode
 bindsym $mod+r mode "resize"
 
 # target                 title    bg    text    indicator   border
