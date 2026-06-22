@@ -71,8 +71,10 @@ yay -Syu libnotify dunst
 ### Hardware driver
 ```bash
 yay -Syu brightnessctl amd-ucode polkit
-yay -Syu mesa libva-mesa-driver libvdpau-va-gl vdpauinfo
+yay -Syu mesa libva-mesa-driver libvdpau-va-gl vdpauinfo vulkan-radeon
 ```
+
+`fwupd` useful for HP firmware/UEFI updates but I don't dare to install it.
 
 ### Install fonts
 ```bash
@@ -123,19 +125,9 @@ sudo vim /etc/systemd/zram-generator.conf
 zram-size = min(ram / 2, 16384)
 ```
 
-### Install TLP, powertop and cpupower
+### Install TLP
 
 Follow this instruction: [TLP main page](https://linrunner.de/tlp/index.html).
-
-
-```bash
-yay -Syu powertop cpupower
-sudo cp dotfiles-collection/hardware/powertop.service /etc/systemd/system/powertop.service
-sudo systemctl enable powertop.service
-sudo systemctl start powertop.service
-sudo cpupower frequency-set -g powersave
-sudo systemctl enable cpupower --now
-```
 
 ### Change shell to Zsh
 To list all installed shells, run:
