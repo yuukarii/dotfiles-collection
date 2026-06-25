@@ -165,6 +165,25 @@ exec /usr/bin/i3
 
 Testing with `startx` from tty session.
 
+### Fcitx5 with kitty
+
+The i3 config starts fcitx5 and launches kitty with `GLFW_IM_MODULE=ibus`.
+Kitty needs this variable for Linux IME input; the usual fcitx variables alone
+are not enough for kitty.
+
+Set the fcitx environment before starting i3:
+
+```bash
+# ~/.xprofile
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx
+export GLFW_IM_MODULE=ibus
+```
+
+If using `startx`, source `~/.xprofile` from `~/.xinitrc` before `exec /usr/bin/i3`.
+New kitty windows launched by the i3 binding should then work with fcitx5.
+
 ### pacman tips
 Pacman configurations `/etc/pacman.conf`:
 ```bash
